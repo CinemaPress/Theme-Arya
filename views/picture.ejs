@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html id="html" lang="<%- page.language %>" class="no-mobile js flexbox flexboxlegacy touch cssanimations csstransforms csstransforms3d csstransitions svg">
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body class="film backdropped logged-out touch backdrop-loaded" data-type="film">
+
+<% include includes/header.ejs %>
+
+<div id="content" class="has-backdrop">
+    <div id="backdrop" style="background-image: url(<%- movie.picture_big %>); background-position: 50% -20px;">
+        <div class="backdrop-fade backdrop-fade-image">
+            <div class="content-wrap">
+                <div id="film-page-wrapper" class="cols-3 overflow">
+                    <div id="poster-col" class="col-6 gutter-right-1 col-poster-large">
+                        <section class="poster-list -p230 no-hover el col">
+                            <div class="react-component film-poster poster">
+                                <div>
+                                    <img src="<%- movie.poster %>" width="230" height="345" alt="<%= movie.title %>" class="image">
+                                    <span class="frame">
+                                        <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="watch-panel js-watch-panel">
+                            <h3 class="title">Разделы</h3>
+                            <p class="js-watch-panel-trailer">
+                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>">
+                                    <span class="icon -play"></span>
+                                    <span class="name">Информация</span>
+                                </a>
+                            </p>
+                            <% if (page.urls.movies.online) { %>
+                            <p class="js-watch-panel-trailer">
+                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.online %>">
+                                    <span class="icon -play"></span>
+                                    <span class="name">Онлайн</span>
+                                </a>
+                            </p>
+                            <% } %>
+                            <% if (page.urls.movies.download) { %>
+                            <p class="js-watch-panel-trailer">
+                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.download %>">
+                                    <span class="icon -play"></span>
+                                    <span class="name">Скачать</span>
+                                </a>
+                            </p>
+                            <% } %>
+                            <% if (page.urls.movies.trailer) { %>
+                            <p class="js-watch-panel-trailer">
+                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.trailer %>">
+                                    <span class="icon -play"></span>
+                                    <span class="name">Трейлер</span>
+                                </a>
+                            </p>
+                            <% } %>
+                            <% if (page.urls.movies.picture) { %>
+                            <p class="js-watch-panel-trailer">
+                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.picture %>" style="color: #fff">
+                                    <span class="icon -play"></span>
+                                    <span class="name">Кадры</span>
+                                </a>
+                            </p>
+                            <% } %>
+                        </section>
+
+                        <% if (typeof news === 'object' && news.length) { %>
+                        <section class="section list-stacked-narrow" style="margin-top: 2.30769231rem; padding: 0">
+                            <h2 class="section-heading">Новое</h2>
+                            <ul class="poster-list -p70 featured-list">
+                                <% news.forEach(function (content) { %>
+                                <li class="list -overlapped -stacked">
+                                    <a href="<%- content.url %>" class="list-link">
+                                        <div class="list-link-stacked clear">
+                                            <ul class="poster-list -overlapped -p70">
+                                                <% content.movies.slice(0,5).forEach(function (id) { %>
+                                                <li class="react-component film-poster poster">
+                                                    <div>
+                                                        <img src="https://cdn.cinemapress.org/images/film_iphone/iphone_<%- id %>.jpg?width=60" width="70" height="105" alt="<%= content.title %>" class="image">
+                                                    </div>
+                                                </li>
+                                                <% }); %>
+                                            </ul>
+                                        </div>
+                                        <span class="overlay"></span>
+                                    </a>
+                                    <h3 class="title-3 prettify">
+                                        <a href="<%- content.url %>"><%= content.title %></a>
+                                    </h3>
+                                </li>
+                                <% }); %>
+                            </ul>
+                        </section>
+                        <% } %>
+
+                        <% if (typeof page.adv === 'object' && page.adv.left) { %>
+                        <div style="text-align: center; margin: 10px auto">
+                            <%- page.adv.left %>
+                        </div>
+                        <% } %>
+
+                    </div>
+                    <div class="col-17">
+
+                        <section id="featured-film-header">
+                            <h1 class="headline-1 js-widont prettify"><%= movie.title %> кадры</h1>
+                            <p>
+                                <small class="number">
+                                    <%- movie.year_url %>
+                                </small>
+                                <% if (movie.director_url) { %>
+                                Режиссер <span class="prettify"><%- movie.director_url %></span>
+                                <% } %>
+                            </p>
+                        </section>
+
+                        <% if (typeof page.adv === 'object' && page.adv.top) { %>
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <%- page.adv.top %>
+                        </div>
+                        <% } %>
+
+                        <section class="section col-10 col-main">
+                            <div id="tabbed-content">
+                                <div id="tab-details" class="tabbed-content-block column-block">
+                                    <% if (movie.countries_url) { %>
+                                    <h3><span>Страна</span></h3>
+                                    <div class="text-sluglist">
+                                        <p>
+                                            <%- movie.countries_url %>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                                    <% if (movie.genres_url) { %>
+                                    <h3><span>Жанры</span></h3>
+                                    <div class="text-sluglist">
+                                        <p>
+                                            <%- movie.genres_url %>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                                    <% if (movie.actors_url) { %>
+                                    <h3><span>Актеры</span></h3>
+                                    <div class="text-sluglist">
+                                        <p>
+                                            <%- movie.actors_url %>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <% if (page.seo) { %>
+                            <section>
+                                <div class="review body-text -prose -hero prettify">
+                                    <h3 class="hidden">Описание</h3>
+                                    <div class="truncate">
+                                        <%- page.seo %>
+                                    </div>
+                                </div>
+                            </section>
+                            <% } %>
+                            <p class="text-link text-footer">
+                                <% if (movie.quality) { %>
+                                <%- movie.quality %>
+                                <% } %> <% if (movie.translate) { %>
+                                <%- movie.translate %>
+                                <% } %>
+                            </p>
+                        </section>
+                        <aside class="sidebar">
+                            <section id="userpanel" class="actions-panel">
+                                <ul class="js-actions-panel">
+                                    <li class="panel-signin">
+                                        Поделиться
+                                    </li>
+                                    <li class="panel-share">
+                                        <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(movie.url) %>" target="_blank" aria-label="">
+                                          <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                                            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk2LjIyNyA5Ni4yMjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2LjIyNyA5Ni4yMjc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNNzMuMDk5LDE1Ljk3M2wtOS4wNTgsMC4wMDRjLTcuMTAyLDAtOC40NzcsMy4zNzUtOC40NzcsOC4zMjh2MTAuOTIxaDE2LjkzOGwtMC4wMDYsMTcuMTA2SDU1LjU2NHY0My44OTVIMzcuODk3VjUyLjMzMiAgIGgtMTQuNzdWMzUuMjI2aDE0Ljc3VjIyLjYxMkMzNy44OTcsNy45NzIsNDYuODQsMCw1OS45LDBMNzMuMSwwLjAyMUw3My4wOTksMTUuOTczTDczLjA5OSwxNS45NzN6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
+                                            </div>
+                                          </div>
+                                        </a>
+                                        <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=<%- encodeURIComponent(movie.url) %>&amp;url=<%- encodeURIComponent(movie.url) %>" target="_blank" aria-label="">
+                                          <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                                            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk0LjEzNSA5NC4xMzUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk0LjEzNSA5NC4xMzU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMzkuMTEsNjcuMTQ1YzIuMjAxLDIuMjcsNC44NzIsMy40MDQsOC4wMTEsMy40MDRoMjIuNjEyYzMuMTM1LDAsNS44MywxLjE1OSw4LjA3MiwzLjQ3NSAgIGMyLjI0NSwyLjMxMiwzLjM2NCw1LjA4NCwzLjM2NCw4LjMycy0xLjExOSw2LjAxOC0zLjM2NCw4LjMyNGMtMi4yNDIsMi4zMTEtNC45MjgsMy40NjctOC4wNywzLjQ2N0g0Ny4xMzEgICBjLTkuNDE2LDAtMTcuNDYyLTMuNDQ1LTI0LjE0My0xMC4zNDRjLTYuNjg2LTYuODk1LTEwLjAyNi0xNS4yMDItMTAuMDI2LTI0LjkxOXYtNDcuMDdjMC0zLjMyOSwxLjExNC02LjEzLDMuMzQtOC40ICAgQzE4LjUyNywxLjEzNiwyMS4yNDcsMCwyNC40NTcsMGMzLjExNSwwLDUuNzk2LDEuMTU1LDguMDE2LDMuNDczYzIuMjI5LDIuMzA5LDMuMzQ0LDUuMDgxLDMuMzQ0LDguMzIxdjExLjc5MWgzMy44ODUgICBjMy4xNDgsMCw1Ljg0NywxLjE1OCw4LjA5OCwzLjQ3MWMyLjI1MywyLjMxMSwzLjM3Myw1LjA4NiwzLjM3Myw4LjMyNWMwLDMuMjMzLTEuMTIsNi4wMDktMy4zNjUsOC4zMjEgICBjLTIuMjQyLDIuMzExLTQuOTM2LDMuNDY4LTguMDcyLDMuNDY4SDM1LjgxNHYxMS42OTFDMzUuODE0LDYyLjEwNywzNi45MTEsNjQuODY3LDM5LjExLDY3LjE0NXoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                                            </div>
+                                          </div>
+                                        </a>
+                                        <a class="resp-sharing-button__link" href="https://plus.google.com/share?url=<%- encodeURIComponent(movie.url) %>" target="_blank" aria-label="">
+                                          <div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                                            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk2LjY2OSA5Ni42NjkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2LjY2OSA5Ni42Njk7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTAuOTEsNTUuMTg5bC00LjUzMy0zLjUyMmMtMS4zOC0xLjE0NC0zLjI3LTIuNjU2LTMuMjctNS40MjJjMC0yLjc3OCwxLjg4OS00LjU0NCwzLjUyNy02LjE4ICAgIGM1LjI3OS00LjE1NywxMC41NTctOC41ODEsMTAuNTU3LTE3LjkwM2MwLTkuNTg2LTYuMDMxLTE0LjYyOS04LjkyMy0xNy4wMjJoNy43OTVMNjQuMjQ0LDBIMzkuNDU5ICAgIEMzMi42NTgsMCwyMi44NTYsMS42MDgsMTUuNjgsNy41MzNjLTUuNDA4LDQuNjY2LTguMDQ2LDExLjA5OS04LjA0NiwxNi44OTJjMCw5LjgzMSw3LjU0OCwxOS43OTgsMjAuODgsMTkuNzk4ICAgIGMxLjI1OSwwLDIuNjM2LTAuMTI0LDQuMDIyLTAuMjUyYy0wLjYyMywxLjUxNS0xLjI1MiwyLjc3Ny0xLjI1Miw0LjkxN2MwLDMuOTA1LDIuMDA2LDYuMjk5LDMuNzc0LDguNTY3ICAgIGMtNS42NjMsMC4zOS0xNi4yMzcsMS4wMTgtMjQuMDMzLDUuODA5Yy03LjQyNCw0LjQxNS05LjY4NCwxMC44NC05LjY4NCwxNS4zNzdjMCw5LjMzNCw4LjgsMTguMDI4LDI3LjA0NSwxOC4wMjggICAgYzIxLjYzNiwwLDMzLjA4OS0xMS45NzEsMzMuMDg5LTIzLjgyM0M2MS40NzcsNjQuMTM5LDU2LjQ0Nyw1OS44NTQsNTAuOTEsNTUuMTg5eiBNMzQuNDMxLDQwLjY5MSAgICBjLTEwLjgyNCwwLTE1LjcyNy0xMy45OTItMTUuNzI3LTIyLjQzNGMwLTMuMjg4LDAuNjIzLTYuNjgyLDIuNzYzLTkuMzMzQzIzLjQ4Niw2LjQsMjcsNC43NjIsMzAuMjgxLDQuNzYyICAgIGMxMC40MzQsMCwxNS44NDYsMTQuMTE4LDE1Ljg0NiwyMy4xOTdjMCwyLjI3MS0wLjI1MSw2LjI5Ni0zLjE0NCw5LjIwN0M0MC45NiwzOS4xODcsMzcuNTc0LDQwLjY5MSwzNC40MzEsNDAuNjkxeiAgICAgTTM0LjU1NSw5MS4zODdjLTEzLjQ2LDAtMjIuMTM5LTYuNDM4LTIyLjEzOS0xNS4zOTJjMC04Ljk0OSw4LjA0OC0xMS45NzgsMTAuODE2LTEyLjk3OWM1LjI4MS0xLjc3NywxMi4wNzYtMi4wMjQsMTMuMjEtMi4wMjQgICAgYzEuMjU4LDAsMS44ODcsMCwyLjg4OSwwLjEyNmM5LjU2OCw2LjgxLDEzLjcyMSwxMC4yMDMsMTMuNzIxLDE2LjY1QzUzLjA1Myw4NS41NzMsNDYuNjM1LDkxLjM4NywzNC41NTUsOTEuMzg3eiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwb2x5Z29uIHBvaW50cz0iODIuNjc5LDQwLjQ5OSA4Mi42NzksMjcuODk0IDc2LjQ1NSwyNy44OTQgNzYuNDU1LDQwLjQ5OSA2My44NjksNDAuNDk5IDYzLjg2OSw0Ni43OTMgNzYuNDU1LDQ2Ljc5MyAgICAgNzYuNDU1LDU5LjQ3NyA4Mi42NzksNTkuNDc3IDgyLjY3OSw0Ni43OTMgOTUuMzI4LDQ2Ljc5MyA5NS4zMjgsNDAuNDk5ICAgIiBmaWxsPSIjRkZGRkZGIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
+                                            </div>
+                                          </div>
+                                        </a>
+                                        <a class="resp-sharing-button__link" href="https://vk.com/share.php?url=<%- encodeURIComponent(movie.url) %>" target="_blank" aria-label="">
+                                          <div class="resp-sharing-button resp-sharing-button--vk resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                                            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk2LjQ5NiA5Ni40OTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2LjQ5NiA5Ni40OTY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNOTIuNDk5LDY1LjE3OGMtMi44NzMtMy40NDYtNi4yNTQtNi4zODctOS40NTMtOS41MWMtMi44ODYtMi44MTUtMy4wNjgtNC40NDgtMC43NDgtNy42OTcgICBjMi41MzItMy41NDYsNS4yNTUtNi45NTYsNy44MS0xMC40ODZjMi4zODUtMy4yOTksNC44MjMtNi41ODksNi4wNzgtMTAuNTM5YzAuNzk2LTIuNTEzLDAuMDkyLTMuNjIzLTIuNDg1LTQuMDYzICAgYy0wLjQ0NC0wLjA3Ny0wLjkwMy0wLjA4MS0xLjM1NS0wLjA4MWwtMTUuMjg5LTAuMDE4Yy0xLjg4My0wLjAyOC0yLjkyNCwwLjc5My0zLjU5LDIuNDYyYy0wLjg5OSwyLjI1Ni0xLjgyNiw0LjUxLTIuODk3LDYuNjg3ICAgYy0yLjQzLDQuOTM2LTUuMTQ0LDkuNzA3LTguOTQ5LDEzLjc0N2MtMC44MzksMC44OTEtMS43NjcsMi4wMTctMy4xNjksMS41NTNjLTEuNzU0LTAuNjQtMi4yNzEtMy41My0yLjI0Mi00LjUwN2wtMC4wMTUtMTcuNjQ3ICAgYy0wLjM0LTIuNTIxLTAuODk5LTMuNjQ1LTMuNDAyLTQuMTM1bC0xNS44ODIsMC4wMDNjLTIuMTIsMC0zLjE4MywwLjgxOS00LjMxNSwyLjE0NWMtMC42NTMsMC43NjYtMC44NSwxLjI2MywwLjQ5MiwxLjUxNyAgIGMyLjYzNiwwLjUsNC4xMjEsMi4yMDYsNC41MTUsNC44NDljMC42MzIsNC4yMjMsMC41ODgsOC40NjMsMC4yMjQsMTIuNzAzYy0wLjEwNywxLjIzOC0wLjMyLDIuNDczLTAuODExLDMuNjI5ICAgYy0wLjc2OCwxLjgxNy0yLjAwOCwyLjE4Ny0zLjYzNywxLjA2OWMtMS40NzUtMS4wMTItMi41MTEtMi40NC0zLjUyNS0zLjg3NGMtMy44MDktNS4zODItNi44NDgtMTEuMTg2LTkuMzI2LTE3LjI4NSAgIGMtMC43MTYtMS43NjItMS45NTEtMi44My0zLjgxOC0yLjg1OWMtNC41ODctMC4wNzMtOS4xNzUtMC4wODUtMTMuNzYyLDAuMDA0Yy0yLjc2LDAuMDUyLTMuNTgzLDEuMzkyLTIuNDU5LDMuODk0ICAgYzQuOTk2LDExLjExMywxMC41NTcsMjEuOTE3LDE3LjgxNiwzMS43NTljMy43MjcsNS4wNTEsOC4wMDYsOS41MSwxMy41MzQsMTIuNjdjNi4yNjUsMy41ODIsMTMuMDA5LDQuNjYsMjAuMTEyLDQuMzI4ICAgYzMuMzI2LTAuMTU2LDQuMzI1LTEuMDIxLDQuNDc5LTQuMzM2YzAuMTA0LTIuMjY4LDAuMzYxLTQuNTIzLDEuNDgtNi41NjFjMS4wOTgtMiwyLjc2MS0yLjM4MSw0LjY3OC0xLjEzNyAgIGMwLjk1OSwwLjYyMywxLjc2NywxLjQxNiwyLjUzLDIuMjUyYzEuODcyLDIuMDQ4LDMuNjc3LDQuMTU4LDUuNjIsNi4xMzdjMi40MzcsMi40OCw1LjMyNCwzLjk0NSw4Ljk1NCwzLjY0Nkw5My43NDQsNzUuNSAgIGMyLjI2NC0wLjE0OCwzLjQzOC0yLjkyNCwyLjEzOC01LjQ1MUM5NC45NjksNjguMjc5LDkzLjc3MSw2Ni43MDMsOTIuNDk5LDY1LjE3OHoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                                            </div>
+                                          </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <% if (movie.vote) { %>
+                            <section class="section ratings-histogram-chart">
+                                <h2 class="section-heading">
+                                    <a href="javascript:void(0)" class="tooltip" title="Рейтинг">Рейтинг</a>
+                                </h2>
+                                <% if (movie.kp_vote) { %>
+                                <span class="average-rating" style="position: initial">
+                                    <span class="display-rating" style="float: right; color: #FF6600">КиноПоиск <%- movie.kp_rating %>%</span>
+                                    <span class="rating-green rating-green-tiny rating-5">
+                                        <% for (var i = 1; i <= movie.kp_rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
+                                    </span>
+                                </span>
+                                <div style="clear: both"></div>
+                                <% } %>
+                                <% if (movie.imdb_vote) { %>
+                                <span class="average-rating" style="position: initial">
+                                    <span class="display-rating" style="float: right; color: #E6BE2E">IMDb <%- movie.imdb_rating %>%</span>
+                                    <span class="rating-green rating-green-tiny rating-5">
+                                        <% for (var i = 1; i <= movie.imdb_rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
+                                    </span>
+                                </span>
+                                <div style="clear: both"></div>
+                                <% } %>
+                                <span class="average-rating" style="position: initial">
+                                    <span class="display-rating" style="float: right; color: #50C375">Общий <%- movie.rating %>%</span>
+                                    <span class="rating-green rating-green-tiny rating-5">
+                                        <% for (var i = 1; i <= movie.rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
+                                    </span>
+                                </span>
+                            </section>
+                            <% } %>
+
+                            <% if (typeof soon === 'object' && soon.length) { %>
+                            <section class="section clearfix">
+                                <h2 class="section-heading heading-no-border">
+                                    Скоро премьеры
+                                </h2>
+                                <div class="poster-list -p70">
+                                    <% soon.slice(0,1).forEach(function (movie) { %>
+                                    <div class="film-prevnext -next">
+                                        <div class="react-component film-poster poster linked-film-poster">
+                                            <div>
+                                                <img src="<%- movie.poster_min %>" alt="<%= movie.title %>" class="image" height="105" width="70">
+                                                <a href="<%- movie.url %>" class="frame">
+                                                    <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                                    <span class="overlay"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                                    <% soon.slice(1,2).forEach(function (movie) { %>
+                                    <div class="film-prevnext -prev">
+                                        <div class="react-component film-poster poster linked-film-poster">
+                                            <div>
+                                                <img src="<%- movie.poster_min %>" alt="<%= movie.title %>" class="image" height="105" width="70">
+                                                <a href="<%- movie.url %>" class="frame">
+                                                    <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                                    <span class="overlay"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                                </div>
+                            </section>
+                            <% } %>
+
+                            <% if (typeof page.adv === 'object' && page.adv.right) { %>
+                            <div style="text-align: center; margin: 10px auto">
+                                <%- page.adv.right %>
+                            </div>
+                            <% } %>
+                        </aside>
+
+                        <section class="film-recent-reviews episodesListBlock" style="display: none; margin: 10px auto;">
+                            <h3><%= movie.title %> новые серии</h3>
+                            <div id="episodesList" data-id="<%- movie.kp_id %>"></div>
+                        </section>
+
+                        <% if (typeof page.adv === 'object' && page.adv.over) { %>
+                        <section class="film-recent-reviews" style="position: relative; text-align: center; margin: 10px auto">
+                            <%- page.adv.over %>
+                        </section>
+                        <% } %>
+
+                        <section class="film-recent-reviews" style="position: relative; margin: 10px auto; border-radius: 10px;background: 0 0;overflow: hidden;">
+                            <%- page.player %>
+                        </section>
+
+                        <% if (typeof page.adv === 'object' && page.adv.under) { %>
+                        <section class="film-recent-reviews" style="position: relative; text-align: center; margin: 10px auto">
+                            <%- page.adv.under %>
+                        </section>
+                        <% } %>
+
+                        <% if (page.comments) { %>
+                        <section class="film-recent-reviews">
+                            <section id="popular-reviews" class="film-reviews section">
+                                <ul class="film-popular-review">
+                                    <li class="film-detail">
+                                        <%- page.comments %>
+                                    </li>
+                                </ul>
+                            </section>
+                        </section>
+                        <% } %>
+
+                        <% if (typeof movies === 'object') {
+                            for (var type in movies) {
+                                if (movies.hasOwnProperty(type) && movies[type].length) {
+                                    movies[type].forEach(function (category) { %>
+                        <section id="related" class="section related-films">
+                            <h2 class="section-heading"><%- category.name %></h2>
+                            <ul class="poster-list -p110 -horizontal -scaled104">
+                                <% if (category.movies.length) {
+                                category.movies.slice(0,6).forEach(function (movie) { %>
+                                <li class="poster-container">
+                                    <div class="poster film-poster really-lazy-load">
+                                        <img src="<%- movie.poster %>" class="image" width="110" height="165" alt="<%= movie.title %>">
+                                        <a href="<%- movie.url %>" class="frame">
+                                            <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                            <span class="overlay"></span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <% }); } %>
+                            </ul>
+                        </section>
+                        <% }); } } } %>
+
+                        <% if (typeof contents === 'object' && contents.length) { %>
+                        <section id="lists" class="list-set section">
+                            <h2 class="section-heading">Упоминания</h2>
+
+                            <% contents.forEach(function (content) { %>
+                            <section class="list -overlapped -summary ">
+                                <a href="<%- content.url %>" class="list-link">
+                                    <ul class="poster-list -p70 -overlapped">
+
+                                        <% content.movies.slice(0,5).forEach(function (id) { %>
+                                        <li class="poster film-poster really-lazy-load listitem">
+                                            <img src="https://cdn.cinemapress.org/images/film_iphone/iphone_<%- id %>.jpg?width=60" class="image" width="70" height="105" alt="<%= content.title %>">
+                                            <span class="frame"><span class="frame-title"></span></span>
+                                        </li>
+                                        <% }); %>
+
+                                    </ul>
+                                </a>
+                                <span class="overlay"></span>
+                                <div class="film-list-summary">
+                                    <h2 class="title-2 prettify">
+                                        <a href="<%- content.url %>"><%= content.title %></a>
+                                    </h2>
+                                    <div class="attribution-block">
+                                        <div class="body-text -prose"><%- content.description_short %>...</div>
+                                    </div>
+                                </div>
+                            </section>
+                            <% }); %>
+
+                        </section>
+                        <% } %>
+
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <% if (typeof page.adv === 'object' && page.adv.bottom) { %>
+                    <div style="text-align: center; margin: 10px auto">
+                        <%- page.adv.bottom %>
+                    </div>
+                    <% } %>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="page-footer js-page-footer">
+
+    <% include includes/footer.ejs %>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html id="html" lang="ru" class="no-mobile js flexbox flexboxlegacy touch cssanimations csstransforms csstransforms3d csstransitions svg">
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body class="logged-out touch">
+
+<% include includes/header.ejs %>
+
+<div id="content">
+    <div class="content-wrap">
+
+        <% if (typeof page.adv === 'object' && page.adv.top) { %>
+        <section style="text-align: center; margin: 10px auto">
+            <%- page.adv.top %>
+        </section>
+        <% } %>
+
+        <% if (typeof slider === 'object' && slider.length) { %>
+        <section id="featured" class="section">
+            <h2 class="title-hero">
+                Готовы к погружению в пучину кино? У Нас есть все <a class="create-account-link cboxElement" href="/<%- page.urls.type %>/<%- page.urls.types.movie %>">фильмы</a>, <a class="create-account-link cboxElement" href="/<%- page.urls.type %>/<%- page.urls.types.serial %>">сериалы</a>, <a class="create-account-link cboxElement" href="/<%- page.urls.type %>/<%- page.urls.types.mult %>">мультфильмы</a>, <a class="create-account-link cboxElement" href="/<%- page.urls.type %>/<%- page.urls.types.anime %>">аниме</a>, <a class="create-account-link cboxElement" href="/<%- page.urls.type %>/<%- page.urls.types.tv %>">ТВ-передачи</a> в мире.
+            </h2>
+            <ul class="poster-list -p150 -horizontal featured-list">
+                <% slider.slice(0,6).forEach(function (movie) { %>
+                <li class="react-component film-poster poster linked-film-poster">
+                    <div>
+                        <img src="<%- movie.poster %>" width="150" height="225" alt="<%= movie.title %>" class="image">
+                        <a href="<%- movie.url %>" class="frame" title="<%= movie.title %>">
+                            <span class="frame-title"><%= movie.title %></span>
+                            <span class="overlay"></span>
+                        </a>
+                    </div>
+                </li>
+                <% }); %>
+            </ul>
+        </section>
+        <% } %>
+
+        <% if (page.seo) { %>
+        <section style="text-align: justify;" id="highlights" class="section">
+            <%- page.seo %>
+        </section>
+        <% } %>
+
+        <% if (typeof index === 'object') {
+            for (var type in index) {
+                if (index.hasOwnProperty(type) && index[type].length) {
+                    index[type].forEach(function (category) { %>
+        <section class="section">
+            <h2 class="section-heading"><%- category.name %></h2>
+            <div class="live-feed-container has-fade"><span class="fadeout"></span>
+                <ul class="poster-list -p70 -horizontal">
+                    <% if (category.movies.length) {
+                        category.movies.slice(0,12).forEach(function (movie) { %>
+                    <li class="live-poster">
+                        <div class="react-component film-poster poster linked-film-poster">
+                            <div>
+                                <img src="<%- movie.poster_min %>" width="70" height="105" alt="<%= movie.title %> (<% if (movie.season && movie.episode) { %><%- movie.season %> сезон <%- movie.episode %> серия<% } else { %><%- movie.year %><% } %>)" class="image">
+                                <a href="<%- movie.url %>" class="frame" title="<%= movie.title %> (<% if (movie.season && movie.episode) { %><%- movie.season %> сезон <%- movie.episode %> серия<% } else { %><%- movie.year %><% } %>)">
+                                    <span class="frame-title"><%= movie.title %> (<% if (movie.season && movie.episode) { %><%- movie.season %> сезон <%- movie.episode %> серия<% } else { %><%- movie.year %><% } %>)</span>
+                                    <span class="overlay"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <% }); } %>
+                </ul>
+            </div>
+        </section>
+        <% }); } } } %>
+
+        <h1 class="title-hero home-mid-title">Читайте и пишите комментарии.</h1>
+        <p class="popular-content body-text">Всем пользователям интересно Ваше мнение, чтобы не тратить на плохие фильмы своё время.</p>
+
+        <div class="cols-2">
+            <div class="col-16">
+                <section id="popular-reviews" class="section">
+                    <h2 class="section-heading"><a href="javascript:void(0)">Последние комментарии</a></h2>
+                    <% if (typeof recent === 'object' && recent.length) { %>
+                    <ul class="poster-list -p70 film-list clear film-details-list no-title">
+                    <% recent.forEach(function (comment) { %>
+                        <li class="film-detail">
+                            <div class="react-component film-poster poster linked-film-poster">
+                                <div>
+                                    <img src="https://cdn.cinemapress.org/images/film_iphone/iphone_<%- comment.kp_id %>.jpg?width=60" width="70" height="105" alt="<%= comment.title %>" class="image">
+                                    <a href="<%- comment.url %>" class="frame">
+                                        <span class="frame-title"><%- comment.title %></span><span class="overlay"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="film-detail-content">
+                                <h2 class="headline-2 prettify">
+                                    <a href="<%- comment.url %>"><%- comment.title %></a>
+                                </h2>
+                                <div class="attribution-block -large">
+                                    <% if (comment.avatar) { %>
+                                    <span class="avatar -a24">
+                                        <img src="<%- comment.avatar %>" alt="<%= comment.user %>" width="24" height="24">
+                                    </span>
+                                    <% } %>
+                                    <p class="attribution">
+                                        <strong class="name"><%- comment.user %></strong> <small>сказал(а)</small> <small><%- comment.date %></small>
+                                    </p>
+                                </div>
+                                <div class="body-text -prose collapsible-text">
+                                    <div class="collapsed-text">
+                                        <%- comment.comment %>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    <% }); %>
+                    </ul>
+                    <% } %>
+                </section>
+            </div>
+            <aside class="sidebar">
+                <% if (typeof soon === 'object' && soon.length) { %>
+                <section class="section clearfix">
+                    <h2 class="section-heading heading-no-border">
+                        Скоро премьеры
+                    </h2>
+                    <div class="poster-list -p70">
+                        <% soon.slice(0,1).forEach(function (movie) { %>
+                        <div class="film-prevnext -next">
+                            <div class="react-component film-poster poster linked-film-poster">
+                                <div>
+                                    <img src="<%- movie.poster_min %>" alt="<%= movie.title %>" class="image" height="105" width="70">
+                                    <a href="<%- movie.url %>" class="frame">
+                                        <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                        <span class="overlay"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                        <% soon.slice(1,2).forEach(function (movie) { %>
+                        <div class="film-prevnext -prev">
+                            <div class="react-component film-poster poster linked-film-poster">
+                                <div>
+                                    <img src="<%- movie.poster_min %>" alt="<%= movie.title %>" class="image" height="105" width="70">
+                                    <a href="<%- movie.url %>" class="frame">
+                                        <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                        <span class="overlay"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </section>
+                <% } %>
+                <% if (typeof news === 'object' && news.length) { %>
+                <section class="section list-stacked-narrow">
+                    <h2 class="section-heading">Новое</h2>
+                    <ul class="poster-list -p70 featured-list">
+                        <% news.forEach(function (content) { %>
+                        <li class="list -overlapped -stacked">
+                            <a href="<%- content.url %>" class="list-link">
+                                <div class="list-link-stacked clear">
+                                    <ul class="poster-list -overlapped -p70">
+                                        <% content.movies.slice(0,5).forEach(function (id) { %>
+                                        <li class="react-component film-poster poster">
+                                            <div>
+                                                <img src="https://cdn.cinemapress.org/images/film_iphone/iphone_<%- id %>.jpg?width=60" width="70" height="105" alt="<%= content.title %>" class="image">
+                                            </div>
+                                        </li>
+                                        <% }); %>
+                                    </ul>
+                                </div>
+                                <span class="overlay"></span>
+                            </a>
+                            <h3 class="title-3 prettify">
+                                <a href="<%- content.url %>"><%= content.title %></a>
+                            </h3>
+                        </li>
+                        <% }); %>
+                    </ul>
+                </section>
+                <% } %>
+
+                <% if (typeof page.adv === 'object' && page.adv.right) { %>
+                <section style="text-align: center; margin: 10px auto">
+                    <%- page.adv.right %>
+                </section>
+                <% } %>
+            </aside>
+        </div>
+
+        <% if (typeof page.adv === 'object' && page.adv.bottom) { %>
+        <section style="text-align: center; margin: 10px auto">
+            <%- page.adv.bottom %>
+        </section>
+        <% } %>
+
+    </div>
+</div>
+<footer class="page-footer js-page-footer">
+
+    <% include includes/footer.ejs %>
+
+</footer>
+</body>
+</html>

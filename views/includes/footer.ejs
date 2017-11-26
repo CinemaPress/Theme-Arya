@@ -1,0 +1,60 @@
+<div class="content-wrap">
+
+    <div class="recentlyViewedBlock" style="display: none; margin: 0 auto 20px auto; width: 100%">
+        <div>Вы надавно смотрели:</div>
+        <div id="recentlyViewed"></div>
+    </div>
+
+    <div class="clear"></div>
+
+    <nav class="footer-nav js-footer-nav">
+        <ul>
+            <li><a href="/<%- page.urls.year %>">Годы</a></li>
+            <li><a href="/<%- page.urls.country %>">Страны</a></li>
+            <li><a href="/<%- page.urls.genre %>">Жанры</a></li>
+            <li><a href="/<%- page.urls.actor %>">Актеры</a></li>
+            <li><a href="/<%- page.urls.director %>">Режиссеры</a></li>
+        </ul>
+    </nav>
+
+    <% if (page.social) { %>
+    <section class="social">
+        <% if (page.social.vk) { %>
+        <span class="vk">
+            <a href="<%- page.social.vk %>" class="tooltip" title="VK" target="_blank">VK</a>
+        </span>
+        <% } %>
+        <% if (page.social.facebook) { %>
+        <span class="facebook">
+            <a href="<%- page.social.facebook %>" class="tooltip" title="Facebook" target="_blank">Facebook</a>
+        </span>
+        <% } %>
+        <% if (page.social.twitter) { %>
+        <span class="twitter">
+            <a href="<%- page.social.twitter %>" class="tooltip" title="Twitter" target="_blank">Twitter</a>
+        </span>
+        <% } %>
+        <% if (page.social.gplus) { %>
+        <span class="gplus">
+            <a href="<%- page.social.gplus %>" class="tooltip" title="G+" target="_blank">G+</a>
+        </span>
+        <% } %>
+        <% if (page.social.youtube) { %>
+        <span class="youtube">
+            <a href="<%- page.social.youtube %>" class="tooltip" title="YouTube" target="_blank">YouTube</a>
+        </span>
+        <% } %>
+        <% if (page.social.instagram) { %>
+        <span class="instagram">
+            <a href="<%- page.social.instagram %>" class="tooltip" title="Instagram" target="_blank">Instagram</a>
+        </span>
+        <% } %>
+    </section>
+    <% } %>
+    <p class="copyright">
+        &copy;&nbsp;<%- new Date().getFullYear() %>&nbsp;<a href="https://cinemapress.org" target="_blank">CinemaPress&nbsp;ACMS</a>
+    </p>
+
+    <%- page.codes.footer %>
+
+</div>
