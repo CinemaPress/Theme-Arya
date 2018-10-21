@@ -10,7 +10,7 @@
 <% include includes/header.ejs %>
 
 <div id="content" class="has-backdrop">
-    <div id="backdrop" style="background-image: url(<%- movie.picture_big %>); background-position: 50% -20px;">
+    <div id="backdrop" style="background-image: url(<%- movie.picture %>); background-position: 50% -20px;">
         <div class="backdrop-fade backdrop-fade-image">
             <div class="content-wrap">
                 <div id="film-page-wrapper" class="cols-3 overflow">
@@ -18,7 +18,7 @@
                         <section class="poster-list -p230 no-hover el col">
                             <div class="react-component film-poster poster">
                                 <div>
-                                    <img src="<%- movie.poster %>" width="230" height="345" alt="<%= movie.title %>" class="image">
+                                    <img src="<%- movie.poster %>" width="230" height="345" class="image" alt="<%= page.title %>" title="<%= page.title %>" id="cinemapress-poster">
                                     <span class="frame">
                                         <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
                                     </span>
@@ -26,18 +26,18 @@
                             </div>
                         </section>
                         <section class="watch-panel js-watch-panel">
-                            <h3 class="title">Разделы</h3>
+                            <h3 class="title"><%- page.l.menu %></h3>
                             <p class="js-watch-panel-trailer">
                                 <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>">
                                     <span class="icon -play"></span>
-                                    <span class="name">Информация</span>
+                                    <span class="name"><%- page.l.information %></span>
                                 </a>
                             </p>
                             <% if (page.urls.movies.online) { %>
                             <p class="js-watch-panel-trailer">
                                 <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.online %>" style="color: #fff">
                                     <span class="icon -play"></span>
-                                    <span class="name">Онлайн</span>
+                                    <span class="name"><%- page.l.online %></span>
                                 </a>
                             </p>
                             <% } %>
@@ -45,7 +45,7 @@
                             <p class="js-watch-panel-trailer">
                                 <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.download %>">
                                     <span class="icon -play"></span>
-                                    <span class="name">Скачать</span>
+                                    <span class="name"><%- page.l.download %></span>
                                 </a>
                             </p>
                             <% } %>
@@ -53,7 +53,7 @@
                             <p class="js-watch-panel-trailer">
                                 <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.trailer %>">
                                     <span class="icon -play"></span>
-                                    <span class="name">Трейлер</span>
+                                    <span class="name"><%- page.l.trailer %></span>
                                 </a>
                             </p>
                             <% } %>
@@ -61,7 +61,7 @@
                             <p class="js-watch-panel-trailer">
                                 <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.picture %>">
                                     <span class="icon -play"></span>
-                                    <span class="name">Кадры</span>
+                                    <span class="name"><%- page.l.picture %></span>
                                 </a>
                             </p>
                             <% } %>
@@ -69,7 +69,7 @@
 
                         <% if (typeof news === 'object' && news.length) { %>
                         <section class="section list-stacked-narrow" style="margin-top: 2.30769231rem; padding: 0">
-                            <h2 class="section-heading">Новое</h2>
+                            <h2 class="section-heading"><%- page.l.news %></h2>
                             <ul class="poster-list -p70 featured-list">
                                 <% news.forEach(function (content) { %>
                                 <li class="list -overlapped -stacked">
@@ -106,13 +106,13 @@
                     <div class="col-17">
 
                         <section id="featured-film-header">
-                            <h1 class="headline-1 js-widont prettify"><%= movie.title %> онлайн</h1>
+                            <h1 class="headline-1 js-widont prettify"><%- page.h1 %></h1>
                             <p>
                                 <small class="number">
                                     <%- movie.year_url %>
                                 </small>
                                 <% if (movie.director_url) { %>
-                                Режиссер <span class="prettify"><%- movie.director_url %></span>
+                                <%- page.l.director %> <span class="prettify"><%- movie.director_url %></span>
                                 <% } %>
                             </p>
                         </section>
@@ -127,7 +127,7 @@
                             <div id="tabbed-content">
                                 <div id="tab-details" class="tabbed-content-block column-block">
                                     <% if (movie.countries_url) { %>
-                                    <h3><span>Страна</span></h3>
+                                    <h3><span><%- page.l.countries %></span></h3>
                                     <div class="text-sluglist">
                                         <p>
                                             <%- movie.countries_url %>
@@ -135,7 +135,7 @@
                                     </div>
                                     <% } %>
                                     <% if (movie.genres_url) { %>
-                                    <h3><span>Жанры</span></h3>
+                                    <h3><span><%- page.l.genres %></span></h3>
                                     <div class="text-sluglist">
                                         <p>
                                             <%- movie.genres_url %>
@@ -143,7 +143,7 @@
                                     </div>
                                     <% } %>
                                     <% if (movie.actors_url) { %>
-                                    <h3><span>Актеры</span></h3>
+                                    <h3><span><%- page.l.actors %></span></h3>
                                     <div class="text-sluglist">
                                         <p>
                                             <%- movie.actors_url %>
@@ -155,7 +155,7 @@
                             <% if (page.seo) { %>
                             <section>
                                 <div class="review body-text -prose -hero prettify">
-                                    <h3 class="hidden">Описание</h3>
+                                    <h3 class="hidden"><%- page.l.storyline %></h3>
                                     <div class="truncate">
                                         <%- page.seo %>
                                     </div>
@@ -174,7 +174,7 @@
                             <section id="userpanel" class="actions-panel">
                                 <ul class="js-actions-panel">
                                     <li class="panel-signin">
-                                        Поделиться
+                                        <%- page.l.share %>
                                     </li>
                                     <li class="panel-share">
                                         <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(movie.url) %>" target="_blank" aria-label="">
@@ -208,11 +208,11 @@
                             <% if (movie.vote) { %>
                             <section class="section ratings-histogram-chart">
                                 <h2 class="section-heading">
-                                    <a href="javascript:void(0)" class="tooltip" title="Рейтинг">Рейтинг</a>
+                                    <a href="javascript:void(0)" class="tooltip" title="<%- page.l.rating %>"><%- page.l.rating %></a>
                                 </h2>
                                 <% if (movie.kp_vote) { %>
                                 <span class="average-rating" style="position: initial">
-                                    <span class="display-rating" style="float: right; color: #FF6600">КиноПоиск <%- movie.kp_rating %>%</span>
+                                    <span class="display-rating" style="float: right; color: #FF6600"><%- page.l.kp %> <%- movie.kp_rating %>%</span>
                                     <span class="rating-green rating-green-tiny rating-5">
                                         <% for (var i = 1; i <= movie.kp_rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
                                     </span>
@@ -221,7 +221,7 @@
                                 <% } %>
                                 <% if (movie.imdb_vote) { %>
                                 <span class="average-rating" style="position: initial">
-                                    <span class="display-rating" style="float: right; color: #E6BE2E">IMDb <%- movie.imdb_rating %>%</span>
+                                    <span class="display-rating" style="float: right; color: #E6BE2E"><%- page.l.imdb %> <%- movie.imdb_rating %>%</span>
                                     <span class="rating-green rating-green-tiny rating-5">
                                         <% for (var i = 1; i <= movie.imdb_rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
                                     </span>
@@ -229,7 +229,7 @@
                                 <div style="clear: both"></div>
                                 <% } %>
                                 <span class="average-rating" style="position: initial">
-                                    <span class="display-rating" style="float: right; color: #50C375">Общий <%- movie.rating %>%</span>
+                                    <span class="display-rating" style="float: right; color: #50C375"><%- page.l.overall %> <%- movie.rating %>%</span>
                                     <span class="rating-green rating-green-tiny rating-5">
                                         <% for (var i = 1; i <= movie.rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
                                     </span>
@@ -240,7 +240,7 @@
                             <% if (typeof soon === 'object' && soon.length) { %>
                             <section class="section clearfix">
                                 <h2 class="section-heading heading-no-border">
-                                    Скоро премьеры
+                                    <%- page.l.soon %>
                                 </h2>
                                 <div class="poster-list -p70">
                                     <% soon.slice(0,1).forEach(function (movie) { %>
@@ -281,17 +281,17 @@
 
                             <section class="section friends-watched watchLaterBlock" style="display: none">
                                 <h2 class="section-heading">
-                                    Досмотреть позже?
+                                    <%- page.l.later %>?
                                 </h2>
                                 <p class="has-icon icon-16 icon-watched small-watched no-avatars">
                                     <span class="icon"></span>
-                                    <a href="javascript:void(0)" id="watchLater">Да, досмотреть позже</a>
+                                    <a href="javascript:void(0)" id="watchLater"><%- page.l.later %></a>
                                 </p>
                             </section>
                         </aside>
 
                         <section class="film-recent-reviews episodesListBlock" style="display: none; margin: 10px auto;">
-                            <h3><%= movie.title %> новые серии</h3>
+                            <h3><%= movie.title %> <%- page.l.episodes %></h3>
                             <div id="episodesList" data-id="<%- movie.kp_id %>"></div>
                         </section>
 
@@ -350,7 +350,7 @@
 
                         <% if (typeof contents === 'object' && contents.length) { %>
                         <section id="lists" class="list-set section">
-                            <h2 class="section-heading">Упоминания</h2>
+                            <h2 class="section-heading"><%- page.l.mentions %></h2>
 
                             <% contents.forEach(function (content) { %>
                             <section class="list -overlapped -summary ">

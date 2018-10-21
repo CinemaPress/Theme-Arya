@@ -1,17 +1,17 @@
 <div class="content-wrap">
 
     <div class="recentlyViewedBlock" style="display: none; margin: 0 auto 20px auto; width: 100%">
-        <div>Вы надавно смотрели:</div>
+        <div><%- page.l.watched %>:</div>
         <div id="recentlyViewed"></div>
     </div>
 
     <nav class="footer-nav js-footer-nav">
         <ul>
-            <li><a href="/<%- page.urls.year %>">Годы</a></li>
-            <li><a href="/<%- page.urls.country %>">Страны</a></li>
-            <li><a href="/<%- page.urls.genre %>">Жанры</a></li>
-            <li><a href="/<%- page.urls.actor %>">Актеры</a></li>
-            <li><a href="/<%- page.urls.director %>">Режиссеры</a></li>
+            <li><a href="/<%- page.urls.year %>"><%- page.l.years %></a></li>
+            <li><a href="/<%- page.urls.country %>"><%- page.l.countries %></a></li>
+            <li><a href="/<%- page.urls.genre %>"><%- page.l.genres %></a></li>
+            <li><a href="/<%- page.urls.actor %>"><%- page.l.actors %></a></li>
+            <li><a href="/<%- page.urls.director %>"><%- page.l.directors %></a></li>
         </ul>
     </nav>
 
@@ -19,38 +19,38 @@
     <section class="social">
         <% if (page.social.vk) { %>
         <span class="vk">
-            <a href="<%- page.social.vk %>" class="tooltip" title="VK" target="_blank">VK</a>
+            <a href="<%- page.social.vk %>" class="tooltip" title="<%- page.l.vk %>" target="_blank"><%- page.l.vk %></a>
         </span>
         <% } %>
         <% if (page.social.facebook) { %>
         <span class="facebook">
-            <a href="<%- page.social.facebook %>" class="tooltip" title="Facebook" target="_blank">Facebook</a>
+            <a href="<%- page.social.facebook %>" class="tooltip" title="<%- page.l.facebook %>" target="_blank"><%- page.l.facebook %></a>
         </span>
         <% } %>
         <% if (page.social.twitter) { %>
         <span class="twitter">
-            <a href="<%- page.social.twitter %>" class="tooltip" title="Twitter" target="_blank">Twitter</a>
+            <a href="<%- page.social.twitter %>" class="tooltip" title="<%- page.l.twitter %>" target="_blank"><%- page.l.twitter %></a>
         </span>
         <% } %>
         <% if (page.social.gplus) { %>
         <span class="gplus">
-            <a href="<%- page.social.gplus %>" class="tooltip" title="G+" target="_blank">G+</a>
+            <a href="<%- page.social.gplus %>" class="tooltip" title="<%- page.l.google %>" target="_blank"><%- page.l.google %></a>
         </span>
         <% } %>
         <% if (page.social.youtube) { %>
         <span class="youtube">
-            <a href="<%- page.social.youtube %>" class="tooltip" title="YouTube" target="_blank">YouTube</a>
+            <a href="<%- page.social.youtube %>" class="tooltip" title="<%- page.l.youtube %>" target="_blank"><%- page.l.youtube %></a>
         </span>
         <% } %>
         <% if (page.social.instagram) { %>
         <span class="instagram">
-            <a href="<%- page.social.instagram %>" class="tooltip" title="Instagram" target="_blank">Instagram</a>
+            <a href="<%- page.social.instagram %>" class="tooltip" title="<%- page.l.instagram %>" target="_blank"><%- page.l.instagram %></a>
         </span>
         <% } %>
     </section>
     <% } %>
     <p class="copyright">
-        &copy;&nbsp;<%- new Date().getFullYear() %>&nbsp;<a href="https://cinemapress.org" target="_blank">CinemaPress&nbsp;ACMS</a> | Администрация: <span id="mylo">Activate JS</span><script>(function(d,i,l,r){d.getElementById(i).innerHTML=l+'@'+r;})(window.document,'mylo','<%- page.email.split('@')[0] %>','<%- page.email.split('@')[1] %>');</script>
+        &copy;&nbsp;<%- new Date().getFullYear() %>&nbsp;<a href="https://cinemapress.org" target="_blank">CinemaPress&nbsp;ACMS</a> | <%- page.l.contacts %>: <span id="mylo">Activate JS</span><script>(function(d,i,l,r){d.getElementById(i).innerHTML=l+'@'+r;})(window.document,'mylo','<%- page.email.split('@')[0] %>','<%- page.email.split('@')[1] %>');</script>
     </p>
 
     <script>

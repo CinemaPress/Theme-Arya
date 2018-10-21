@@ -11,7 +11,7 @@
 
 <div id="content" class="has-backdrop">
     <% var bg = ''; if (typeof movies === 'object' && movies.length) {
-        movies.slice(0,1).forEach(function (movie) { bg = movie.picture_big; }); } %>
+        movies.slice(0,1).forEach(function (movie) { bg = movie.picture; }); } %>
     <div id="backdrop" style="background-position: center -90px; background-image: url(<%- bg %>);">
         <div class="backdrop-fade backdrop-fade-image">
             <div class="content-wrap">
@@ -25,7 +25,7 @@
                         <% } %>
 
                         <div class="list-title-intro">
-                            <h1 class="title-1 prettify"><%= page.title %></h1>
+                            <h1 class="title-1 prettify"><%- page.h1 %></h1>
 
                             <div class="body-text -prose -hero clear collapsible-text">
                                 <div class="collapsed-text">
@@ -128,7 +128,7 @@
                         <% if (typeof content === 'object' && page.comments) { %>
                         <div id="comments" class="clear has-comment-controls">
                             <h2 class="section-heading">
-                                <span class="comment-count">Комментарии</span>
+                                <span class="comment-count"><%- page.l.comments %></span>
                             </h2>
                             <%- page.comments %>
                         </div>
@@ -140,7 +140,7 @@
                         <section id="userpanel" class="actions-panel">
                             <ul class="js-actions-panel">
                                 <li class="panel-signin">
-                                    Пделиться
+                                    <%- page.l.share %>
                                 </li>
                                 <li class="panel-share">
                                     <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsharingbuttons.io" target="_blank" aria-label="">
@@ -173,7 +173,7 @@
 
                         <% if (typeof content === 'object' && content.tags) { %>
                         <section class="section" style="margin-bottom: 20px">
-                            <h3 class="section-heading">Теги</h3>
+                            <h3 class="section-heading"><%- page.l.tags %></h3>
                             <ul class="tags">
                                 <li>
                                     <%- content.tags %>
@@ -184,7 +184,7 @@
 
                         <% if (typeof news === 'object' && news.length) { %>
                         <section class="section list-stacked-narrow">
-                            <h2 class="section-heading">Новое</h2>
+                            <h2 class="section-heading"><%- page.l.news %></h2>
                             <ul class="poster-list -p70 featured-list">
                                 <% news.forEach(function (content) { %>
                                 <li class="list -overlapped -stacked">
