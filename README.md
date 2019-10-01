@@ -1,10 +1,10 @@
 # Theme «arya»
 
-![Theme «arya» for CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png "Theme «arya» for CinemaPress ACMS")
+![Theme «arya» for CinemaPress](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png "Theme «arya» for CinemaPress")
 
-:art: Theme «arya» for CinemaPress ACMS
+:art: Theme «arya» for CinemaPress
 
-- [Arya.CinemaPress.org](http://Arya.CinemaPress.org/)
+- [Arya.CinemaPress.io](http://Arya.CinemaPress.io/)
 
 ## How to install?
 1. Download [GitHub](https://github.com/CinemaPress/Theme-Arya/archive/master.zip) or [GitLab](https://gitlab.com/CinemaPress/Theme-Arya/repository/archive.zip) or [BitBucket](https://bitbucket.org/cinemapress/theme-arya/get/master.zip) or [Coding](https://coding.net/u/CinemaPress/p/Theme-Arya/git/archive/master.zip)
@@ -14,7 +14,7 @@
 
 ## Installation via terminal
 ```
-~# wget cinemapress.org/i -qO i && chmod +x i && ./i 3
+~# bash <(wget -qO- cinemapress.sh)
 ```
 
 ## Как установить?
@@ -25,5 +25,5 @@
 
 ## Установка через терминал
 ```
-~# wget cinemapress.org/i -qO i && chmod +x i && ./i 3
+~# bash <(wget -qO- cinemapress.sh)
 ```

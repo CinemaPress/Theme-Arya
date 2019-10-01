@@ -64,7 +64,16 @@
                 if (index.hasOwnProperty(type) && index[type].length) {
                     index[type].forEach(function (category) { %>
         <section class="section">
-            <h2 class="section-heading"><%- category.name %></h2>
+            <h2 class="section-heading">
+                <%- category.name %>
+                <div class="randomMovieIndex">
+                    <div class="cinemapress-random-index"
+                         onclick="window.location.href='<%- category.url %>?random'"
+                         title="<%- page.l.random %>">
+                        <img src="/themes/arya/public/images/dice.svg" alt="<%- page.l.random %>">
+                    </div>
+                </div>
+            </h2>
             <div class="live-feed-container has-fade"><span class="fadeout"></span>
                 <ul class="poster-list -p70 -horizontal">
                     <% if (category.movies.length) {
@@ -90,20 +99,12 @@
 
         <div class="cols-2">
             <div class="col-16">
+                <% if (typeof recent === 'object' && recent.length) { %>
                 <section id="popular-reviews" class="section">
                     <h2 class="section-heading"><%- page.l.comments %></h2>
-                    <% if (typeof recent === 'object' && recent.length) { %>
                     <ul class="poster-list -p70 film-list clear film-details-list no-title">
                     <% recent.forEach(function (comment) { %>
                         <li class="film-detail">
-                            <div class="react-component film-poster poster linked-film-poster">
-                                <div>
-                                    <img src="https://cdn.cinemapress.org/images/film_iphone/iphone_<%- comment.kp_id %>.jpg?width=60" width="70" height="105" alt="<%= comment.title %>" class="image">
-                                    <a href="<%- comment.url %>" class="frame">
-                                        <span class="frame-title"><%- comment.title %></span><span class="overlay"></span>
-                                    </a>
-                                </div>
-                            </div>
                             <div class="film-detail-content">
                                 <h2 class="headline-2 prettify">
                                     <a href="<%- comment.url %>"><%- comment.title %></a>
@@ -127,8 +128,8 @@
                         </li>
                     <% }); %>
                     </ul>
-                    <% } %>
                 </section>
+                <% } %>
             </div>
             <aside class="sidebar">
                 <% if (typeof soon === 'object' && soon.length) { %>
@@ -178,7 +179,7 @@
                                         <% content.movies.slice(0,5).forEach(function (id) { %>
                                         <li class="react-component film-poster poster">
                                             <div>
-                                                <img src="https://cdn.cinemapress.org/images/film_iphone/iphone_<%- id %>.jpg?width=60" width="70" height="105" alt="<%= content.title %>" class="image">
+                                                <img src="https://k.1poster.net/images/film_iphone/iphone_<%- id %>.jpg?width=60" width="70" height="105" alt="<%= content.title %>" class="image">
                                             </div>
                                         </li>
                                         <% }); %>

@@ -1,6 +1,6 @@
 <header id="header">
     <section>
-        <div style="height: 15px;"></div><div class="logo"></div>
+        <div style="height: 15px;"></div><div class="logo" style="background-image:url(/themes/arya/public/images/logo.png?v=<%- page.ver %>);"></div>
         <div class="react-component">
             <div>
                 <nav id="main-nav">
@@ -27,16 +27,24 @@
                                 <span class="icon" style="margin-top: 8px;"></span>
                             </a>
                         </li>
+                        <div class="randomMovieMenu">
+                            <li class="films-page main-nav-films cinemapress-random-menu">
+                                <a href="/?random" class="no-avatars" title="<%- page.l.lucky %>">
+                                    <img src="/themes/arya/public/images/dice.svg" alt="<%- page.l.lucky %>">
+                                </a>
+                            </li>
+                        </div>
                     </ul>
                 </nav>
             </div>
         </div>
-        <form id="search" class="js-search-form search-form" action="/<%- page.urls.search %>/title" method="get" style="display: block; z-index: 901;">
+        <form id="search" class="js-search-form search-form" action="/<%- page.urls.search %>" method="get" style="display: block; z-index: 901;">
             <fieldset>
                 <label for="search-q" class="hidden"><%- page.l.search %>:</label>
-                <input type="text" name="q" id="search-q" class="field -borderless">
+                <input type="text" name="q" id="search-q" class="field -borderless" data-autocomplete="desktop">
                 <input type="submit" value="<%- page.l.search %>" class="action">
             </fieldset>
+            <div class="cinemapress-autocomplete" data-autocomplete="desktop"></div>
         </form>
     </section>
 </header>
