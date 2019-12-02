@@ -10,7 +10,7 @@
 <% include includes/header.ejs %>
 
 <div id="content" class="has-backdrop">
-    <div id="backdrop" style="background-image: url(<%- movie.picture %>); background-position: 50% -20px;">
+    <div id="backdrop" style="background-image: url('<%- movie.picture %>'); background-position: 50% -20px;">
         <div class="backdrop-fade backdrop-fade-image">
             <div class="content-wrap">
                 <div id="film-page-wrapper" class="cols-3 overflow">
@@ -130,7 +130,7 @@
                                     <h3><span><%- page.l.countries %></span></h3>
                                     <div class="text-sluglist">
                                         <p>
-                                            <%- movie.countries_url %>
+                                            <%- movie.countries_url.replace(/(,\s|\sи\s)/g, ' ') %>
                                         </p>
                                     </div>
                                     <% } %>
@@ -138,7 +138,7 @@
                                     <h3><span><%- page.l.genres %></span></h3>
                                     <div class="text-sluglist">
                                         <p>
-                                            <%- movie.genres_url %>
+                                            <%- movie.genres_url.replace(/(,\s|\sи\s)/g, ' ') %>
                                         </p>
                                     </div>
                                     <% } %>
@@ -146,9 +146,17 @@
                                     <h3><span><%- page.l.actors %></span></h3>
                                     <div class="text-sluglist">
                                         <p>
-                                            <%- movie.actors_url %>
+                                            <%- movie.actors_url.replace(/(,\s|\sи\s)/g, ' ') %>
                                         </p>
                                     </div>
+                                    <% } %>
+                                    <% if (movie.tags_url) { %>
+                                        <h3><span><%- page.l.tags %></span></h3>
+                                        <div class="text-sluglist">
+                                            <p>
+                                                <%- movie.tags_url.replace(/(,\s|\sи\s)/g, ' ') %>
+                                            </p>
+                                        </div>
                                     <% } %>
                                 </div>
                             </div>
@@ -322,9 +330,9 @@
                                 <%- category.name %>
                                 <div class="randomMovieRelated">
                                     <div class="cinemapress-random-related"
-                                         onclick="window.location.href='<%- category.url %>?random'"
+                                         onclick="window.location.href='<%- (category.url.indexOf('?')+1 ? category.url + '&random' : category.url + '?random') %>'"
                                          title="<%- page.l.random %>">
-                                        <img src="/themes/arya/public/images/dice.svg" alt="<%- page.l.random %>">
+                                        <img src="/themes/<%- page.theme %>/public/images/dice.svg" alt="<%- page.l.random %>">
                                     </div>
                                 </div>
                             </h2>

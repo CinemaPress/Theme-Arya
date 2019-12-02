@@ -12,7 +12,7 @@
 <div id="content" class="has-backdrop">
     <% var bg = ''; if (typeof movies === 'object' && movies.length) {
         movies.slice(0,1).forEach(function (movie) { bg = movie.picture; }); } %>
-    <div id="backdrop" style="background-position: center -90px; background-image: url(<%- bg %>);">
+    <div id="backdrop" style="background-position: center -90px; background-image: url('<%- bg %>');">
         <div class="backdrop-fade backdrop-fade-image">
             <div class="content-wrap">
                 <div class="cols-2">
@@ -50,8 +50,8 @@
 
                         <div class="randomMovieCategory">
                             <div class="cinemapress-random-category"
-                                 onclick="window.location.href='<%- page.url %>?random'">
-                                <img src="/themes/arya/public/images/dice.svg" alt="<%- page.l.random %>">
+                                 onclick="window.location.href='<%- (page.url.indexOf('?')+1 ? page.url + '&random' : page.url + '?random') %>'">
+                                <img src="/themes/<%- page.theme %>/public/images/dice.svg" alt="<%- page.l.random %>">
                                 <span><%- page.l.lucky %></span>
                                 <small><%- page.l.random %></small>
                             </div>
