@@ -299,8 +299,10 @@
                         </section>
                         <% } %>
 
-                        <section class="film-recent-reviews" style="position: relative; margin: 10px auto; border-radius: 10px;background: 0 0;overflow: hidden;">
-                            <%- page.player %>
+                        <section id="cinemapress-player" class="film-recent-reviews" style="margin: 10px auto; border-radius: 10px;background: 0 0;">
+                            <% if (page.player) { %>
+                                <%- page.player %>
+                            <% } %>
                         </section>
 
                         <% if (typeof page.adv === 'object' && page.adv.under) { %>
