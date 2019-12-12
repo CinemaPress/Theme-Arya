@@ -10,8 +10,8 @@
 <% include includes/header.ejs %>
 
 <div id="content" class="has-backdrop">
-    <div id="backdrop" style="background-image: url('<%- movie.picture %>'); background-position: 50% -20px;">
-        <div class="backdrop-fade backdrop-fade-image">
+    <div id="backdrop" style="background-image: url('<% if (movie.pictures.length) { %><%- movie.picture %><% } %>'); background-position: 50% -20px;">
+        <div <% if (movie.pictures.length) { %> class="backdrop-fade backdrop-fade-image" <% } else { %> style="padding-top: 50px;" <% } %>>
             <div class="content-wrap">
                 <div id="film-page-wrapper" class="cols-3 overflow">
                     <div id="poster-col" class="col-6 gutter-right-1 col-poster-large">
