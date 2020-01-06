@@ -2,12 +2,12 @@
 <html id="html" lang="<%- page.language %>" class="no-mobile js flexbox flexboxlegacy touch cssanimations csstransforms csstransforms3d csstransitions svg">
 <head>
 
-    <% include includes/head.ejs %>
+    <%- include('includes/head.ejs'); -%>
 
 </head>
 <body class="list-page backdropped">
 
-<% include includes/header.ejs %>
+<%- include('includes/header.ejs'); -%>
 
 <div id="content" class="has-backdrop">
     <div id="backdrop">
@@ -17,9 +17,9 @@
                     <section class="section col-17 col-main overflow clearfix">
 
                         <% if (typeof page.adv === 'object' && page.adv.top) { %>
-                        <div style="text-align: center; margin: 10px auto">
-                            <%- page.adv.top %>
-                        </div>
+                            <div style="text-align: center; margin: 10px auto">
+                                <%- page.adv.top %>
+                            </div>
                         <% } %>
 
                         <div class="list-title-intro">
@@ -28,20 +28,20 @@
                             <div class="body-text -prose -hero clear collapsible-text">
                                 <div class="collapsed-text">
                                     <% if (page.seo) { %>
-                                    <%- page.seo %>
+                                        <%- page.seo %>
                                     <% } %>
                                 </div>
                             </div>
                         </div>
 
                         <% if (typeof categories === 'object' && categories.length) {
-                            categories.forEach(function (content) { %>
-                        <div style="float:left;width:50%;">
-                            <div style="margin:10px;padding:0;position:relative">
-                                <div class="cinemapress-categories" style="background-image:url('<%- content.image %>');"></div>
-                                <a href="<%- content.url %>" class="cinemapress-categories-title"><%= content.title %></a>
+                        categories.forEach(function (content) { %>
+                            <div style="float:left;width:50%;">
+                                <div style="margin:10px;padding:0;position:relative">
+                                    <div class="cinemapress-categories" style="background-image:url('<%- content.image %>');"></div>
+                                    <a href="<%- content.url %>" class="cinemapress-categories-title"><%= content.title %></a>
+                                </div>
                             </div>
-                        </div>
                         <% }); %>
                         <% } %>
 
@@ -83,47 +83,47 @@
                         </section>
 
                         <% if (typeof news === 'object' && news.length) { %>
-                        <section class="section list-stacked-narrow">
-                            <h2 class="section-heading"><%- page.l.news %></h2>
-                            <ul class="poster-list -p70 featured-list">
-                                <% news.forEach(function (content) { %>
-                                <li class="list -overlapped -stacked">
-                                    <a href="<%- content.url %>" class="list-link">
-                                        <div class="list-link-stacked clear">
-                                            <ul class="poster-list -overlapped -p70">
-                                                <% content.movies.slice(0,5).forEach(function (id) { %>
-                                                <li class="react-component film-poster poster">
-                                                    <div>
-                                                        <img src="https://k.1poster.net/images/film_iphone/iphone60_<%- id %>.jpg" width="70" height="105" alt="<%= content.title %>" class="image">
-                                                    </div>
-                                                </li>
-                                                <% }); %>
-                                            </ul>
-                                        </div>
-                                        <span class="overlay"></span>
-                                    </a>
-                                    <h3 class="title-3 prettify">
-                                        <a href="<%- content.url %>"><%= content.title %></a>
-                                    </h3>
-                                </li>
-                                <% }); %>
-                            </ul>
-                        </section>
+                            <section class="section list-stacked-narrow">
+                                <h2 class="section-heading"><%- page.l.news %></h2>
+                                <ul class="poster-list -p70 featured-list">
+                                    <% news.forEach(function (content) { %>
+                                        <li class="list -overlapped -stacked">
+                                            <a href="<%- content.url %>" class="list-link">
+                                                <div class="list-link-stacked clear">
+                                                    <ul class="poster-list -overlapped -p70">
+                                                        <% content.movies.slice(0,5).forEach(function (id) { %>
+                                                            <li class="react-component film-poster poster">
+                                                                <div>
+                                                                    <img src="https://k.1poster.net/images/film_iphone/iphone60_<%- id %>.jpg" width="70" height="105" alt="<%= content.title %>" class="image">
+                                                                </div>
+                                                            </li>
+                                                        <% }); %>
+                                                    </ul>
+                                                </div>
+                                                <span class="overlay"></span>
+                                            </a>
+                                            <h3 class="title-3 prettify">
+                                                <a href="<%- content.url %>"><%= content.title %></a>
+                                            </h3>
+                                        </li>
+                                    <% }); %>
+                                </ul>
+                            </section>
                         <% } %>
 
                         <% if (typeof page.adv === 'object' && page.adv.right) { %>
-                        <div style="text-align: center; margin: 10px auto">
-                            <%- page.adv.right %>
-                        </div>
+                            <div style="text-align: center; margin: 10px auto">
+                                <%- page.adv.right %>
+                            </div>
                         <% } %>
 
                     </aside>
                 </div>
 
                 <% if (typeof page.adv === 'object' && page.adv.bottom) { %>
-                <div style="text-align: center; margin: 10px auto">
-                    <%- page.adv.bottom %>
-                </div>
+                    <div style="text-align: center; margin: 10px auto">
+                        <%- page.adv.bottom %>
+                    </div>
                 <% } %>
 
             </div>
@@ -132,7 +132,7 @@
 </div>
 <footer class="page-footer js-page-footer">
 
-    <% include includes/footer.ejs %>
+    <%- include('includes/footer.ejs'); -%>
 
 </footer>
 </body>

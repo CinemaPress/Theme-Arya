@@ -2,12 +2,12 @@
 <html id="html" lang="<%- page.language %>" class="no-mobile js flexbox flexboxlegacy touch cssanimations csstransforms csstransforms3d csstransitions svg">
 <head>
 
-    <% include includes/head.ejs %>
+    <%- include('includes/head.ejs'); -%>
 
 </head>
 <body class="film backdropped logged-out touch backdrop-loaded" data-type="film">
 
-<% include includes/header.ejs %>
+<%- include('includes/header.ejs'); -%>
 
 <div id="content" class="has-backdrop">
     <div id="backdrop" style="background-image: url('<% if (movie.pictures.length) { %><%- movie.picture %><% } %>'); background-position: 50% -20px;">
@@ -34,72 +34,72 @@
                                 </a>
                             </p>
                             <% if (page.urls.movies.online) { %>
-                            <p class="js-watch-panel-trailer">
-                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.online %>">
-                                    <span class="icon -play"></span>
-                                    <span class="name"><%- page.l.online %></span>
-                                </a>
-                            </p>
+                                <p class="js-watch-panel-trailer">
+                                    <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.online %>">
+                                        <span class="icon -play"></span>
+                                        <span class="name"><%- page.l.online %></span>
+                                    </a>
+                                </p>
                             <% } %>
                             <% if (page.urls.movies.download) { %>
-                            <p class="js-watch-panel-trailer">
-                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.download %>">
-                                    <span class="icon -play"></span>
-                                    <span class="name"><%- page.l.download %></span>
-                                </a>
-                            </p>
+                                <p class="js-watch-panel-trailer">
+                                    <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.download %>">
+                                        <span class="icon -play"></span>
+                                        <span class="name"><%- page.l.download %></span>
+                                    </a>
+                                </p>
                             <% } %>
                             <% if (page.urls.movies.trailer) { %>
-                            <p class="js-watch-panel-trailer">
-                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.trailer %>">
-                                    <span class="icon -play"></span>
-                                    <span class="name"><%- page.l.trailer %></span>
-                                </a>
-                            </p>
+                                <p class="js-watch-panel-trailer">
+                                    <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.trailer %>">
+                                        <span class="icon -play"></span>
+                                        <span class="name"><%- page.l.trailer %></span>
+                                    </a>
+                                </p>
                             <% } %>
                             <% if (page.urls.movies.picture) { %>
-                            <p class="js-watch-panel-trailer">
-                                <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.picture %>" style="color: #fff">
-                                    <span class="icon -play"></span>
-                                    <span class="name"><%- page.l.picture %></span>
-                                </a>
-                            </p>
+                                <p class="js-watch-panel-trailer">
+                                    <a class="label -text track-event js-trailer-zoom cboxElement" href="<%- movie.url %>/<%- page.urls.movies.picture %>" style="color: #fff">
+                                        <span class="icon -play"></span>
+                                        <span class="name"><%- page.l.picture %></span>
+                                    </a>
+                                </p>
                             <% } %>
                         </section>
 
                         <% if (typeof news === 'object' && news.length) { %>
-                        <section class="section list-stacked-narrow" style="margin-top: 2.30769231rem; padding: 0">
-                            <h2 class="section-heading"><%- page.l.news %></h2>
-                            <ul class="poster-list -p70 featured-list">
-                                <% news.forEach(function (content) { %>
-                                <li class="list -overlapped -stacked">
-                                    <a href="<%- content.url %>" class="list-link">
-                                        <div class="list-link-stacked clear">
-                                            <ul class="poster-list -overlapped -p70">
-                                                <% content.movies.slice(0,5).forEach(function (id) { %>
-                                                <li class="react-component film-poster poster">
-                                                    <div>
-                                                        <img src="https://k.1poster.net/images/film_iphone/iphone60_<%- id %>.jpg" width="70" height="105" alt="<%= content.title %>" class="image">
-                                                    </div>
-                                                </li>
-                                                <% }); %>
-                                            </ul>
-                                        </div>
-                                        <span class="overlay"></span>
-                                    </a>
-                                    <h3 class="title-3 prettify">
-                                        <a href="<%- content.url %>"><%= content.title %></a>
-                                    </h3>
-                                </li>
-                                <% }); %>
-                            </ul>
-                        </section>
+                            <section class="section list-stacked-narrow" style="margin-top: 2.30769231rem; padding: 0">
+                                <h2 class="section-heading"><%- page.l.news %></h2>
+                                <ul class="poster-list -p70 featured-list">
+                                    <% news.forEach(function (content) { %>
+                                        <li class="list -overlapped -stacked">
+                                            <a href="<%- content.url %>" class="list-link">
+                                                <div class="list-link-stacked clear">
+                                                    <ul class="poster-list -overlapped -p70">
+                                                        <% content.movies.slice(0,5).forEach(function (id) { %>
+                                                            <li class="react-component film-poster poster">
+                                                                <div>
+                                                                    <img src="https://k.1poster.net/images/film_iphone/iphone60_<%- id %>.jpg" width="70" height="105" alt="<%= content.title %>" class="image">
+                                                                </div>
+                                                            </li>
+                                                        <% }); %>
+                                                    </ul>
+                                                </div>
+                                                <span class="overlay"></span>
+                                            </a>
+                                            <h3 class="title-3 prettify">
+                                                <a href="<%- content.url %>"><%= content.title %></a>
+                                            </h3>
+                                        </li>
+                                    <% }); %>
+                                </ul>
+                            </section>
                         <% } %>
 
                         <% if (typeof page.adv === 'object' && page.adv.left) { %>
-                        <div style="text-align: center; margin: 10px auto">
-                            <%- page.adv.left %>
-                        </div>
+                            <div style="text-align: center; margin: 10px auto">
+                                <%- page.adv.left %>
+                            </div>
                         <% } %>
 
                     </div>
@@ -112,43 +112,43 @@
                                     <%- movie.year_url %>
                                 </small>
                                 <% if (movie.director_url) { %>
-                                <%- page.l.director %> <span class="prettify"><%- movie.director_url %></span>
+                                    <%- page.l.director %> <span class="prettify"><%- movie.director_url %></span>
                                 <% } %>
                             </p>
                         </section>
 
                         <% if (typeof page.adv === 'object' && page.adv.top) { %>
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <%- page.adv.top %>
-                        </div>
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <%- page.adv.top %>
+                            </div>
                         <% } %>
 
                         <section class="section col-10 col-main">
                             <div id="tabbed-content">
                                 <div id="tab-details" class="tabbed-content-block column-block">
                                     <% if (movie.countries_url) { %>
-                                    <h3><span><%- page.l.countries %></span></h3>
-                                    <div class="text-sluglist">
-                                        <p>
-                                            <%- movie.countries_url.replace(/(,\s|\sи\s)/g, ' ') %>
-                                        </p>
-                                    </div>
+                                        <h3><span><%- page.l.countries %></span></h3>
+                                        <div class="text-sluglist">
+                                            <p>
+                                                <%- movie.countries_url.replace(/(,\s|\sи\s)/g, ' ') %>
+                                            </p>
+                                        </div>
                                     <% } %>
                                     <% if (movie.genres_url) { %>
-                                    <h3><span><%- page.l.genres %></span></h3>
-                                    <div class="text-sluglist">
-                                        <p>
-                                            <%- movie.genres_url.replace(/(,\s|\sи\s)/g, ' ') %>
-                                        </p>
-                                    </div>
+                                        <h3><span><%- page.l.genres %></span></h3>
+                                        <div class="text-sluglist">
+                                            <p>
+                                                <%- movie.genres_url.replace(/(,\s|\sи\s)/g, ' ') %>
+                                            </p>
+                                        </div>
                                     <% } %>
                                     <% if (movie.actors_url) { %>
-                                    <h3><span><%- page.l.actors %></span></h3>
-                                    <div class="text-sluglist">
-                                        <p>
-                                            <%- movie.actors_url.replace(/(,\s|\sи\s)/g, ' ') %>
-                                        </p>
-                                    </div>
+                                        <h3><span><%- page.l.actors %></span></h3>
+                                        <div class="text-sluglist">
+                                            <p>
+                                                <%- movie.actors_url.replace(/(,\s|\sи\s)/g, ' ') %>
+                                            </p>
+                                        </div>
                                     <% } %>
                                     <% if (movie.tags_url) { %>
                                         <h3><span><%- page.l.tags %></span></h3>
@@ -161,20 +161,20 @@
                                 </div>
                             </div>
                             <% if (page.seo) { %>
-                            <section>
-                                <div class="review body-text -prose -hero prettify">
-                                    <h3 class="hidden"><%- page.l.storyline %></h3>
-                                    <div class="truncate">
-                                        <%- page.seo %>
+                                <section>
+                                    <div class="review body-text -prose -hero prettify">
+                                        <h3 class="hidden"><%- page.l.storyline %></h3>
+                                        <div class="truncate">
+                                            <%- page.seo %>
+                                        </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
                             <% } %>
                             <p class="text-link text-footer">
                                 <% if (movie.quality) { %>
-                                <%- movie.quality %>
+                                    <%- movie.quality %>
                                 <% } %> <% if (movie.translate) { %>
-                                <%- movie.translate %>
+                                    <%- movie.translate %>
                                 <% } %>
                             </p>
                         </section>
@@ -214,77 +214,77 @@
                             </section>
 
                             <% if (movie.vote) { %>
-                            <section class="section ratings-histogram-chart">
-                                <h2 class="section-heading">
-                                    <a href="javascript:void(0)" class="tooltip" title="<%- page.l.rating %>"><%- page.l.rating %></a>
-                                </h2>
-                                <% if (movie.kp_vote) { %>
-                                <span class="average-rating" style="position: initial">
+                                <section class="section ratings-histogram-chart">
+                                    <h2 class="section-heading">
+                                        <a href="javascript:void(0)" class="tooltip" title="<%= page.l.rating %>"><%- page.l.rating %></a>
+                                    </h2>
+                                    <% if (movie.kp_vote) { %>
+                                        <span class="average-rating" style="position: initial">
                                     <span class="display-rating" style="float: right; color: #FF6600"><%- page.l.kp %> <%- movie.kp_rating %>%</span>
                                     <span class="rating-green rating-green-tiny rating-5">
                                         <% for (var i = 1; i <= movie.kp_rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
                                     </span>
                                 </span>
-                                <div style="clear: both"></div>
-                                <% } %>
-                                <% if (movie.imdb_vote) { %>
-                                <span class="average-rating" style="position: initial">
+                                        <div style="clear: both"></div>
+                                    <% } %>
+                                    <% if (movie.imdb_vote) { %>
+                                        <span class="average-rating" style="position: initial">
                                     <span class="display-rating" style="float: right; color: #E6BE2E"><%- page.l.imdb %> <%- movie.imdb_rating %>%</span>
                                     <span class="rating-green rating-green-tiny rating-5">
                                         <% for (var i = 1; i <= movie.imdb_rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
                                     </span>
                                 </span>
-                                <div style="clear: both"></div>
-                                <% } %>
-                                <span class="average-rating" style="position: initial">
+                                        <div style="clear: both"></div>
+                                    <% } %>
+                                    <span class="average-rating" style="position: initial">
                                     <span class="display-rating" style="float: right; color: #50C375"><%- page.l.overall %> <%- movie.rating %>%</span>
                                     <span class="rating-green rating-green-tiny rating-5">
                                         <% for (var i = 1; i <= movie.rating/10; i++) { %><span class="rating" style="width: 9px; height: 9px;">★</span><% } %>
                                     </span>
                                 </span>
-                            </section>
+                                </section>
                             <% } %>
 
                             <% if (typeof soon === 'object' && soon.length) { %>
-                            <section class="section clearfix">
-                                <h2 class="section-heading heading-no-border">
-                                    <%- page.l.soon %>
-                                </h2>
-                                <div class="poster-list -p70">
-                                    <% soon.slice(0,1).forEach(function (movie) { %>
-                                    <div class="film-prevnext -next">
-                                        <div class="react-component film-poster poster linked-film-poster">
-                                            <div>
-                                                <img src="<%- movie.poster_min %>" alt="<%= movie.title %>" class="image" height="105" width="70">
-                                                <a href="<%- movie.url %>" class="frame">
-                                                    <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
-                                                    <span class="overlay"></span>
-                                                </a>
+                                <section class="section clearfix">
+                                    <h2 class="section-heading heading-no-border">
+                                        <%- page.l.soon %>
+                                    </h2>
+                                    <div class="poster-list -p70">
+                                        <% soon.slice(0,1).forEach(function (movie) { %>
+                                            <div class="film-prevnext -next">
+                                                <div class="react-component film-poster poster linked-film-poster">
+                                                    <div>
+                                                        <img src="<%- movie.poster_min %>" alt="<%= movie.title %>" class="image" height="105" width="70">
+                                                        <a href="<%- movie.url %>" class="frame">
+                                                            <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                                            <span class="overlay"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <% }); %>
-                                    <% soon.slice(1,2).forEach(function (movie) { %>
-                                    <div class="film-prevnext -prev">
-                                        <div class="react-component film-poster poster linked-film-poster">
-                                            <div>
-                                                <img src="<%- movie.poster_min %>" alt="<%= movie.title %>" class="image" height="105" width="70">
-                                                <a href="<%- movie.url %>" class="frame">
-                                                    <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
-                                                    <span class="overlay"></span>
-                                                </a>
+                                        <% }); %>
+                                        <% soon.slice(1,2).forEach(function (movie) { %>
+                                            <div class="film-prevnext -prev">
+                                                <div class="react-component film-poster poster linked-film-poster">
+                                                    <div>
+                                                        <img src="<%- movie.poster_min %>" alt="<%= movie.title %>" class="image" height="105" width="70">
+                                                        <a href="<%- movie.url %>" class="frame">
+                                                            <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                                            <span class="overlay"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        <% }); %>
                                     </div>
-                                    <% }); %>
-                                </div>
-                            </section>
+                                </section>
                             <% } %>
 
                             <% if (typeof page.adv === 'object' && page.adv.right) { %>
-                            <div style="text-align: center; margin: 10px auto">
-                                <%- page.adv.right %>
-                            </div>
+                                <div style="text-align: center; margin: 10px auto">
+                                    <%- page.adv.right %>
+                                </div>
                             <% } %>
                         </aside>
 
@@ -294,9 +294,9 @@
                         </section>
 
                         <% if (typeof page.adv === 'object' && page.adv.over) { %>
-                        <section class="film-recent-reviews" style="position: relative; text-align: center; margin: 10px auto">
-                            <%- page.adv.over %>
-                        </section>
+                            <section class="film-recent-reviews" style="position: relative; text-align: center; margin: 10px auto">
+                                <%- page.adv.over %>
+                            </section>
                         <% } %>
 
                         <section id="cinemapress-player" class="film-recent-reviews" style="margin: 10px auto; border-radius: 10px;background: 0 0;">
@@ -306,86 +306,231 @@
                         </section>
 
                         <% if (typeof page.adv === 'object' && page.adv.under) { %>
-                        <section class="film-recent-reviews" style="position: relative; text-align: center; margin: 10px auto">
-                            <%- page.adv.under %>
-                        </section>
+                            <section class="film-recent-reviews" style="position: relative; text-align: center; margin: 10px auto">
+                                <%- page.adv.under %>
+                            </section>
                         <% } %>
 
                         <% if (page.comments) { %>
-                        <section class="film-recent-reviews">
-                            <section id="popular-reviews" class="film-reviews section">
-                                <ul class="film-popular-review">
-                                    <li class="film-detail">
-                                        <%- page.comments %>
-                                    </li>
-                                </ul>
+                            <h2 style="margin-top: 15px"><%- page.l.comments %></h2>
+                            <section class="film-recent-reviews">
+                                <section id="popular-reviews" class="film-reviews section">
+                                    <ul class="film-popular-review">
+                                        <li class="film-detail">
+                                            <%- page.comments %>
+                                        </li>
+                                    </ul>
+                                </section>
                             </section>
-                        </section>
+                        <% } else { %>
+                            <section class="film-recent-reviews">
+                                <section id="popular-reviews" class="film-reviews section">
+                                    <ul class="film-popular-review">
+                                        <li class="film-detail">
+                                            <div id="cinemapress-comments">
+                                                <h3 class="cinemapress-comment-h3">
+                                                    <%- page.l.comments %>
+                                                    <span class="cinemapress-comment-count cinemapress-comment-bg-color"><%- comments && comments.count || '0' %></span>
+                                                </h3>
+                                                <% if (typeof comments === 'object' && typeof comments.config === 'object') { %>
+                                                    <% if (comments.config.star_rating) { %>
+                                                        <div class="cinemapress-comment-star">
+                                                            <div class="cinemapress-comment-star-down" data-comment-star="1"></div>
+                                                            <div class="cinemapress-comment-star-award" data-comment-star="3"></div>
+                                                            <div class="cinemapress-comment-star-up" data-comment-star="2"></div>
+                                                        </div>
+                                                    <% } %>
+                                                    <div class="cinemapress-comment-form">
+                                                        <% if (comments.config.bb_codes) { %>
+                                                            <div class="cinemapress-comment-form-bb">
+                                                                <span class="cinemapress-comment-bg cinemapress-comment-form-bb-b" data-bb-code="b"><%- page.l.bold.toLowerCase() %></span>
+                                                                <span class="cinemapress-comment-bg cinemapress-comment-form-bb-i" data-bb-code="i"><%- page.l.italic.toLowerCase() %></span>
+                                                                <span class="cinemapress-comment-bg cinemapress-comment-form-bb-spoiler" data-bb-code="spoiler">👻 <%- page.l.spoiler.toLowerCase() %></span>
+                                                                <span class="cinemapress-comment-bg cinemapress-comment-form-bb-search" data-bb-code="search">🔍 <%- page.l.search.toLowerCase() %></span>
+                                                                <input class="cinemapress-comment-bg cinemapress-comment-form-anonymous" name="comment_anonymous" type="text" placeholder="<%- page.l.username %>">
+                                                            </div>
+                                                        <% } %>
+                                                        <div>
+                                                            <div class="cinemapress-comment-textarea-div">
+                                                                <textarea name="comment_text" class="cinemapress-comment-bg cinemapress-comment-textarea" placeholder="<%- page.l.comment %>" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+                                                                <div class="cinemapress-comment-form-bg"></div>
+                                                                <div class="cinemapress-comment-button-bg hover-off" data-comment-type="submit">
+                                                                    <span class="cinemapress-comment-button-text"></span>
+                                                                </div>
+                                                            </div>
+                                                            <% if (comments.config.question) { %>
+                                                                <div class="cinemapress-comment-bg cinemapress-comment-question" style="display: none">
+                                                                    <div class="cinemapress-comment-question-text"><%- comments.config.question %></div>
+                                                                    <div class="cinemapress-comment-question-answer">
+                                                                        <% if (comments.config.question_yes) { %>
+                                                                            <span class="cinemapress-comment-question-answer-yes"><%- page.l.yes %></span>
+                                                                        <% } %>
+                                                                        <% if (comments.config.question_not) { %>
+                                                                            <span class="cinemapress-comment-question-answer-not"><%- page.l.not %></span>
+                                                                        <% } %>
+                                                                    </div>
+                                                                    <% if (comments.config.question_yes) { %>
+                                                                        <div class="cinemapress-comment-question-text-yes" style="display: none">
+                                                                            <%- comments.config.question_yes %>
+                                                                        </div>
+                                                                    <% } %>
+                                                                    <% if (comments.config.question_not) { %>
+                                                                        <div class="cinemapress-comment-question-text-not" style="display: none">
+                                                                            <%- comments.config.question_not %>
+                                                                        </div>
+                                                                    <% } %>
+                                                                    <div class="cinemapress-comment-question-bg"></div>
+                                                                    <% if (comments.config.question_poster) { %>
+                                                                        <div class="cinemapress-comment-question-bg-poster" style="background-image:url('<%- comments.config.question_poster %>')"></div>
+                                                                    <% } %>
+                                                                </div>
+                                                            <% } %>
+                                                        </div>
+                                                        <div style="font-size:8px;text-align:right;opacity:.2">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" style="font-size:8px" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" style="font-size:8px" target="_blank">Terms of Service</a> apply.</div>
+                                                    </div>
+                                                    <%- comments.indexer ? comments.indexer : '' %>
+                                                    <% if (comments.list && comments.list.length) { %>
+                                                        <% comments.list.forEach(function (comment) { %>
+                                                            <div class="cinemapress-comment" id="c<%- comment.id %>">
+                                                                <div class="cinemapress-comment-head">
+                                                                    <div class="cinemapress-comment-head-avatar">
+                                                                        <img src="<%- comment.avatar %>" alt="<%= comment.user %>">
+                                                                    </div>
+                                                                    <% if (comments.config.star_rating) { %>
+                                                                        <% if (comment.star === 1) { %>
+                                                                            <div class="cinemapress-comment-head-star">
+                                                                                <div class="cinemapress-comment-star-down"></div>
+                                                                            </div>
+                                                                        <% } else if (comment.star === 2) { %>
+                                                                            <div class="cinemapress-comment-head-star">
+                                                                                <div class="cinemapress-comment-star-up"></div>
+                                                                            </div>
+                                                                        <% } else if (comment.star === 3) { %>
+                                                                            <div class="cinemapress-comment-head-star">
+                                                                                <div class="cinemapress-comment-star-award"></div>
+                                                                            </div>
+                                                                        <% } %>
+                                                                    <% } %>
+                                                                    <div class="cinemapress-comment-head-meta">
+                                                                        <div class="cinemapress-comment-head-meta-vote">
+                                                        <span class="cinemapress-comment-like" data-comment-type="like" data-comment-id="<%- comment.id %>" title="<%= page.l.like %>">
+                                                            <span class="cinemapress-comment-like-icon"></span>
+                                                            <span class="cinemapress-comment-like-number"><%- comment.like %></span>
+                                                        </span>
+                                                                            <span class="cinemapress-comment-dislike" data-comment-type="dislike" data-comment-id="<%- comment.id %>" title="<%= page.l.dislike %>">
+                                                            <span class="cinemapress-comment-dislike-number"><%- comment.dislike %></span>
+                                                            <span class="cinemapress-comment-dislike-icon"></span>
+                                                        </span>
+                                                                            <span class="cinemapress-comment-reply" data-reply-id="<%- comment.id %>" data-bb-code="b" data-bb-value="<%- comment.user %>" title="<%= page.l.reply %>">
+                                                            <span class="cinemapress-comment-reply-icon"></span>
+                                                        </span>
+                                                                        </div>
+                                                                        <div class="cinemapress-comment-user" data-comment-id="<%- comment.id %>">
+                                                                            <div class="cinemapress-comment-user-name">
+                                                                                <%- comment.user %>
+                                                                            </div><div class="cinemapress-comment-user-said">
+                                                                                <%- page.l.said %>
+                                                                            </div><div class="cinemapress-comment-user-date">
+                                                                                <%- comment.date %>
+                                                                            </div><div class="cinemapress-comment-user-link">
+                                                                                <a href="<%- comment.url %>#c<%- comment.id %>">#</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cinemapress-comment-bg cinemapress-comment-radius">
+                                                                    <%- comment.comment %>
+                                                                </div>
+                                                                <% if (comment.admin) { %>
+                                                                    <div class="cinemapress-comment-admin">
+                                                                        <div class="cinemapress-comment-bg cinemapress-comment-admin-text">
+                                                                            <%- comment.admin %>
+                                                                        </div>
+                                                                        <div class="cinemapress-comment-admin-bg"></div>
+                                                                    </div>
+                                                                <% } %>
+                                                            </div>
+                                                        <% }); %>
+                                                    <% } %>
+                                                <% } %>
+                                                <div class="cinemapress-comment-arrow">
+                                                    <% if (comments && comments.prev) { %>
+                                                        <div class="cinemapress-prev-comments" onclick="window.location.href='?page=<%- comments.prev %>#cinemapress-comments'"></div>
+                                                    <% } %>
+                                                    <% if (comments && comments.next) { %>
+                                                        <div class="cinemapress-next-comments" onclick="window.location.href='?page=<%- comments.next %>#cinemapress-comments'"></div>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </section>
                         <% } %>
 
                         <% if (typeof movies === 'object') {
-                            for (var type in movies) {
-                                if (movies.hasOwnProperty(type) && movies[type].length) {
-                                    movies[type].forEach(function (category) { %>
-                        <section id="related" class="section related-films">
-                            <h2 class="section-heading">
-                                <%- category.name %>
-                                <div class="randomMovieRelated">
-                                    <div class="cinemapress-random-related"
-                                         onclick="window.location.href='<%- (category.url && category.url.indexOf('?')+1 ? category.url + '&random' : category.url + '?random') %>'"
-                                         title="<%- page.l.random %>">
-                                        <img src="/themes/<%- page.theme %>/public/images/dice.svg" alt="<%- page.l.random %>">
+                                for (var type in movies) {
+                        if (movies.hasOwnProperty(type) && movies[type].length) {
+                        movies[type].forEach(function (category) { %>
+                            <section id="related" class="section related-films">
+                                <h2 class="section-heading">
+                                    <%- category.name %>
+                                    <div class="randomMovieRelated">
+                                        <div class="cinemapress-random-related"
+                                             onclick="window.location.href='<%- (category.url && category.url.indexOf('?')+1 ? category.url + '&random' : category.url + '?random') %>'"
+                                             title="<%= page.l.random %>">
+                                            <img src="/themes/<%- page.theme %>/public/images/dice.svg" alt="<%= page.l.random %>">
+                                        </div>
                                     </div>
-                                </div>
-                            </h2>
-                            <ul class="poster-list -p110 -horizontal -scaled104">
-                                <% if (category.movies.length) {
-                                category.movies.slice(0,6).forEach(function (movie) { %>
-                                <li class="poster-container">
-                                    <div class="poster film-poster really-lazy-load">
-                                        <img src="<%- movie.poster %>" class="image" width="110" height="165" alt="<%= movie.title %>">
-                                        <a href="<%- movie.url %>" class="frame">
-                                            <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
-                                            <span class="overlay"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <% }); } %>
-                            </ul>
-                        </section>
+                                </h2>
+                                <ul class="poster-list -p110 -horizontal -scaled104">
+                                    <% if (category.movies.length) {
+                                    category.movies.slice(0,6).forEach(function (movie) { %>
+                                        <li class="poster-container">
+                                            <div class="poster film-poster really-lazy-load">
+                                                <img src="<%- movie.poster %>" class="image" width="110" height="165" alt="<%= movie.title %>">
+                                                <a href="<%- movie.url %>" class="frame">
+                                                    <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>
+                                                    <span class="overlay"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    <% }); } %>
+                                </ul>
+                            </section>
                         <% }); } } } %>
 
                         <% if (typeof contents === 'object' && contents.length) { %>
-                        <section id="lists" class="list-set section">
-                            <h2 class="section-heading"><%- page.l.mentions %></h2>
+                            <section id="lists" class="list-set section">
+                                <h2 class="section-heading"><%- page.l.mentions %></h2>
 
-                            <% contents.forEach(function (content) { %>
-                            <section class="list -overlapped -summary ">
-                                <a href="<%- content.url %>" class="list-link">
-                                    <ul class="poster-list -p70 -overlapped">
+                                <% contents.forEach(function (content) { %>
+                                    <section class="list -overlapped -summary ">
+                                        <a href="<%- content.url %>" class="list-link">
+                                            <ul class="poster-list -p70 -overlapped">
 
-                                        <% content.movies.slice(0,5).forEach(function (id) { %>
-                                        <li class="poster film-poster really-lazy-load listitem">
-                                            <img src="https://k.1poster.net/images/film_iphone/iphone60_<%- id %>.jpg" class="image" width="70" height="105" alt="<%= content.title %>">
-                                            <span class="frame"><span class="frame-title"></span></span>
-                                        </li>
-                                        <% }); %>
+                                                <% content.movies.slice(0,5).forEach(function (id) { %>
+                                                    <li class="poster film-poster really-lazy-load listitem">
+                                                        <img src="https://k.1poster.net/images/film_iphone/iphone60_<%- id %>.jpg" class="image" width="70" height="105" alt="<%= content.title %>">
+                                                        <span class="frame"><span class="frame-title"></span></span>
+                                                    </li>
+                                                <% }); %>
 
-                                    </ul>
-                                </a>
-                                <span class="overlay"></span>
-                                <div class="film-list-summary">
-                                    <h2 class="title-2 prettify">
-                                        <a href="<%- content.url %>"><%= content.title %></a>
-                                    </h2>
-                                    <div class="attribution-block">
-                                        <div class="body-text -prose"><%- content.description_short %>...</div>
-                                    </div>
-                                </div>
+                                            </ul>
+                                        </a>
+                                        <span class="overlay"></span>
+                                        <div class="film-list-summary">
+                                            <h2 class="title-2 prettify">
+                                                <a href="<%- content.url %>"><%= content.title %></a>
+                                            </h2>
+                                            <div class="attribution-block">
+                                                <div class="body-text -prose"><%- content.description_short %>...</div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                <% }); %>
+
                             </section>
-                            <% }); %>
-
-                        </section>
                         <% } %>
 
                     </div>
@@ -393,9 +538,9 @@
                     <div class="clear"></div>
 
                     <% if (typeof page.adv === 'object' && page.adv.bottom) { %>
-                    <div style="text-align: center; margin: 10px auto">
-                        <%- page.adv.bottom %>
-                    </div>
+                        <div style="text-align: center; margin: 10px auto">
+                            <%- page.adv.bottom %>
+                        </div>
                     <% } %>
 
                     <div class="clear"></div>
@@ -406,7 +551,7 @@
 </div>
 <footer class="page-footer js-page-footer">
 
-    <% include includes/footer.ejs %>
+    <%- include('includes/footer.ejs'); -%>
 
 </footer>
 </body>

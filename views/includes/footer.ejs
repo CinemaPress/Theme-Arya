@@ -16,56 +16,55 @@
     </nav>
 
     <% if (page.social) { %>
-    <section class="social">
-        <% if (page.social.vk) { %>
-        <span class="vk">
-            <a href="<%- page.social.vk %>" class="tooltip" title="<%- page.l.vk %>" target="_blank"><%- page.l.vk %></a>
+        <section class="social">
+            <% if (page.social.vk) { %>
+                <span class="vk">
+            <a href="<%- page.social.vk %>" class="tooltip" title="<%= page.l.vk %>" target="_blank"><%- page.l.vk %></a>
         </span>
-        <% } %>
-        <% if (page.social.facebook) { %>
-        <span class="facebook">
-            <a href="<%- page.social.facebook %>" class="tooltip" title="<%- page.l.facebook %>" target="_blank"><%- page.l.facebook %></a>
+            <% } %>
+            <% if (page.social.facebook) { %>
+                <span class="facebook">
+            <a href="<%- page.social.facebook %>" class="tooltip" title="<%= page.l.facebook %>" target="_blank"><%- page.l.facebook %></a>
         </span>
-        <% } %>
-        <% if (page.social.twitter) { %>
-        <span class="twitter">
-            <a href="<%- page.social.twitter %>" class="tooltip" title="<%- page.l.twitter %>" target="_blank"><%- page.l.twitter %></a>
+            <% } %>
+            <% if (page.social.twitter) { %>
+                <span class="twitter">
+            <a href="<%- page.social.twitter %>" class="tooltip" title="<%= page.l.twitter %>" target="_blank"><%- page.l.twitter %></a>
         </span>
-        <% } %>
-        <% if (page.social.telegram) { %>
-        <span class="telegram">
-            <a href="<%- page.social.telegram %>" class="tooltip" title="<%- page.l.telegram %>" target="_blank"><%- page.l.telegram %></a>
+            <% } %>
+            <% if (page.social.telegram) { %>
+                <span class="telegram">
+            <a href="<%- page.social.telegram %>" class="tooltip" title="<%= page.l.telegram %>" target="_blank"><%- page.l.telegram %></a>
         </span>
-        <% } %>
-        <% if (page.social.youtube) { %>
-        <span class="youtube">
-            <a href="<%- page.social.youtube %>" class="tooltip" title="<%- page.l.youtube %>" target="_blank"><%- page.l.youtube %></a>
+            <% } %>
+            <% if (page.social.youtube) { %>
+                <span class="youtube">
+            <a href="<%- page.social.youtube %>" class="tooltip" title="<%= page.l.youtube %>" target="_blank"><%- page.l.youtube %></a>
         </span>
-        <% } %>
-        <% if (page.social.instagram) { %>
-        <span class="instagram">
-            <a href="<%- page.social.instagram %>" class="tooltip" title="<%- page.l.instagram %>" target="_blank"><%- page.l.instagram %></a>
+            <% } %>
+            <% if (page.social.instagram) { %>
+                <span class="instagram">
+            <a href="<%- page.social.instagram %>" class="tooltip" title="<%= page.l.instagram %>" target="_blank"><%- page.l.instagram %></a>
         </span>
-        <% } %>
-    </section>
+            <% } %>
+        </section>
     <% } %>
     <p class="copyright">
         &copy;&nbsp;<%- new Date().getFullYear() %>&nbsp;<a href="https://cinemapress.io" target="_blank">CinemaPress</a> | <%- page.l.contacts %>: <span id="mylo">Activate JS</span><script>(function(d,i,l,r){d.getElementById(i).innerHTML=l+'@'+r;})(window.document,'mylo','<%- page.email.split('@')[0] %>','<%- page.email.split('@')[1] %>');</script>
     </p>
 
     <script>
-        WebFontConfig = {
-            google: {families: ['Play']}
-        };
-        (function () {
-            var wf = document.createElement('script');
-            wf.src = ('https:' === document.location.protocol ? 'https' : 'http') +
-                '://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
+      WebFontConfig = {
+        google: {families: ['Play']}
+      };
+      (function () {
+        var wf = document.createElement('script');
+        wf.src = '//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
     </script>
 
     <%- page.codes.footer %>
