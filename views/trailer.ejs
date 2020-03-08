@@ -79,7 +79,7 @@
                                                 <% content.movies.slice(0,5).forEach(function (id) { %>
                                                 <li class="react-component film-poster poster">
                                                     <div>
-                                                        <img src="/files/poster/small/<%- id %>.jpg?save" width="70" height="105" alt="<%= content.title %>" class="image">
+                                                        <img src="/files/poster/small/<%- id %>.jpg" width="70" height="105" alt="<%= content.title %>" class="image">
                                                     </div>
                                                 </li>
                                                 <% }); %>
@@ -511,7 +511,7 @@
 
                                         <% content.movies.slice(0,5).forEach(function (id) { %>
                                         <li class="poster film-poster really-lazy-load listitem">
-                                            <img src="/files/poster/small/<%- id %>.jpg?save" class="image" width="70" height="105" alt="<%= content.title %>">
+                                            <img src="/files/poster/small/<%- id %>.jpg" class="image" width="70" height="105" alt="<%= content.title %>">
                                             <span class="frame"><span class="frame-title"></span></span>
                                         </li>
                                         <% }); %>
