@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html id="html" lang="<%- page.language %>" class="no-mobile js flexbox flexboxlegacy touch cssanimations csstransforms csstransforms3d csstransitions svg">
+<html id="html" lang="<%- page.language %>"
+      class="no-mobile js flexbox flexboxlegacy touch cssanimations csstransforms csstransforms3d csstransitions svg">
 <head>
 
     <%- include('includes/head.ejs'); -%>
@@ -11,7 +12,10 @@
 
 <div id="content" class="has-backdrop">
     <% var bg = ''; if (typeof movies === 'object' && movies.length) {
-        movies.slice(0,1).forEach(function (movie) { bg = movie.picture; }); } %>
+        movies.slice(0, 1).forEach(function(movie) {
+            bg = movie.picture;
+        });
+    } %>
     <div id="backdrop" style="background-position: center -90px; background-image: url('<%- bg %>');">
         <div class="backdrop-fade backdrop-fade-image">
             <div class="content-wrap">
@@ -31,7 +35,8 @@
                                 <div class="collapsed-text">
                                     <% if (typeof content === 'object') { %>
                                         <% if (content.image) { %>
-                                            <img src="<%- content.image %>" style="height: 150px;border-radius: 5px;float: left;margin-right: 10px;margin-bottom: 10px; margin-top: 8px;">
+                                            <img src="<%- content.image %>"
+                                                 style="height: 150px;border-radius: 5px;float: left;margin-right: 10px;margin-bottom: 10px; margin-top: 8px;">
                                         <% } %>
                                         <% if (content.description) { %>
                                             <div>
@@ -50,7 +55,7 @@
 
                         <div class="randomMovieCategory">
                             <div class="cinemapress-random-category"
-                                 onclick="window.location.href='<%- (page.url.indexOf('?')+1 ? page.url + '&random=' : page.url + '?random=') %><%- Math.random() %>'">
+                                 onclick="window.location.href='<%- (page.url.indexOf('?') + 1 ? page.url + '&random=' : page.url + '?random=') %><%- Math.random() %>'">
                                 <img src="/themes/<%- page.theme %>/public/images/dice.svg" alt="<%= page.l.random %>">
                                 <span><%- page.l.lucky %></span>
                                 <small><%- page.l.random %></small>
@@ -86,7 +91,8 @@
                                 <% movies.forEach(function (movie) { %>
                                     <li class="film-detail">
                                         <div class="poster film-poster really-lazy-load">
-                                            <img src="<%- movie.poster_min %>" class="image" width="70" height="105" alt="<%= movie.title %>"/>
+                                            <img src="<%- movie.poster_min %>" class="image" width="70" height="105"
+                                                 alt="<%= movie.title %>"/>
                                             <span class="frame"><span class="frame-title"></span></span>
                                         </div>
                                         <div class="film-detail-content">
@@ -110,25 +116,30 @@
                             <div class="pagination">
                                 <% if (page.pagination.first) { %>
                                     <div class="paginate-nextprev">
-                                        <a class="previous" href="<%- page.pagination.first.link %>"><%- page.pagination.first.number %></a>
+                                        <a class="previous"
+                                           href="<%- page.pagination.first.link %>"><%- page.pagination.first.number %></a>
                                     </div>
                                 <% } %>
                                 <% if (page.pagination.last) { %>
                                     <div class="paginate-nextprev">
-                                        <a class="next" href="<%- page.pagination.last.link %>"><%- page.pagination.last.number %></a>
+                                        <a class="next"
+                                           href="<%- page.pagination.last.link %>"><%- page.pagination.last.number %></a>
                                     </div>
                                 <% } %>
                                 <div class="paginate-pages">
                                     <ul>
                                         <% if (page.pagination.prev.length) { %>
                                             <% page.pagination.prev.forEach(function (prev) { %>
-                                                <li class="paginate-page"><a href="<%- prev.link %>"><%- prev.number %></a></li>
+                                                <li class="paginate-page"><a
+                                                            href="<%- prev.link %>"><%- prev.number %></a></li>
                                             <% }); %>
                                         <% } %>
-                                        <li class="paginate-page paginate-current"><span><%- page.pagination.current %></span></li>
+                                        <li class="paginate-page paginate-current">
+                                            <span><%- page.pagination.current %></span></li>
                                         <% if (page.pagination.next.length) { %>
                                             <% page.pagination.next.forEach(function (next) { %>
-                                                <li class="paginate-page"><a href="<%- next.link %>"><%- next.number %></a></li>
+                                                <li class="paginate-page"><a
+                                                            href="<%- next.link %>"><%- next.number %></a></li>
                                             <% }); %>
                                         <% } %>
                                     </ul>
@@ -154,31 +165,45 @@
                                             </h3>
                                             <% if (comments.config.star_rating) { %>
                                                 <div class="cinemapress-comment-star">
-                                                    <div class="cinemapress-comment-star-down" data-comment-star="1"></div>
-                                                    <div class="cinemapress-comment-star-award" data-comment-star="3"></div>
-                                                    <div class="cinemapress-comment-star-up" data-comment-star="2"></div>
+                                                    <div class="cinemapress-comment-star-down"
+                                                         data-comment-star="1"></div>
+                                                    <div class="cinemapress-comment-star-award"
+                                                         data-comment-star="3"></div>
+                                                    <div class="cinemapress-comment-star-up"
+                                                         data-comment-star="2"></div>
                                                 </div>
                                             <% } %>
                                             <div class="cinemapress-comment-form">
                                                 <% if (comments.config.bb_codes) { %>
                                                     <div class="cinemapress-comment-form-bb">
-                                                        <span class="cinemapress-comment-bg cinemapress-comment-form-bb-b" data-bb-code="b"><%- page.l.bold.toLowerCase() %></span>
-                                                        <span class="cinemapress-comment-bg cinemapress-comment-form-bb-i" data-bb-code="i"><%- page.l.italic.toLowerCase() %></span>
-                                                        <span class="cinemapress-comment-bg cinemapress-comment-form-bb-spoiler" data-bb-code="spoiler">👻 <%- page.l.spoiler.toLowerCase() %></span>
-                                                        <span class="cinemapress-comment-bg cinemapress-comment-form-bb-search" data-bb-code="search">🔍 <%- page.l.search.toLowerCase() %></span>
-                                                        <input class="cinemapress-comment-bg cinemapress-comment-form-anonymous" name="comment_anonymous" type="text" placeholder="<%- page.l.username %>">
+                                                        <span class="cinemapress-comment-bg cinemapress-comment-form-bb-b"
+                                                              data-bb-code="b"><%- page.l.bold.toLowerCase() %></span>
+                                                        <span class="cinemapress-comment-bg cinemapress-comment-form-bb-i"
+                                                              data-bb-code="i"><%- page.l.italic.toLowerCase() %></span>
+                                                        <span class="cinemapress-comment-bg cinemapress-comment-form-bb-spoiler"
+                                                              data-bb-code="spoiler">👻 <%- page.l.spoiler.toLowerCase() %></span>
+                                                        <span class="cinemapress-comment-bg cinemapress-comment-form-bb-search"
+                                                              data-bb-code="search">🔍 <%- page.l.search.toLowerCase() %></span>
+                                                        <input class="cinemapress-comment-bg cinemapress-comment-form-anonymous"
+                                                               name="comment_anonymous" type="text"
+                                                               placeholder="<%- page.l.username %>">
                                                     </div>
                                                 <% } %>
                                                 <div>
                                                     <div class="cinemapress-comment-textarea-div">
-                                                        <textarea name="comment_text" class="cinemapress-comment-bg cinemapress-comment-textarea" placeholder="<%- page.l.comment %>" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+                                                        <textarea name="comment_text"
+                                                                  class="cinemapress-comment-bg cinemapress-comment-textarea"
+                                                                  placeholder="<%- page.l.comment %>" autocomplete="off"
+                                                                  autocapitalize="off" spellcheck="false"></textarea>
                                                         <div class="cinemapress-comment-form-bg"></div>
-                                                        <div class="cinemapress-comment-button-bg hover-off" data-comment-type="submit">
+                                                        <div class="cinemapress-comment-button-bg hover-off"
+                                                             data-comment-type="submit">
                                                             <span class="cinemapress-comment-button-text"></span>
                                                         </div>
                                                     </div>
                                                     <% if (comments.config.question) { %>
-                                                        <div class="cinemapress-comment-bg cinemapress-comment-question" style="display: none">
+                                                        <div class="cinemapress-comment-bg cinemapress-comment-question"
+                                                             style="display: none">
                                                             <div class="cinemapress-comment-question-text"><%- comments.config.question %></div>
                                                             <div class="cinemapress-comment-question-answer">
                                                                 <% if (comments.config.question_yes) { %>
@@ -189,23 +214,32 @@
                                                                 <% } %>
                                                             </div>
                                                             <% if (comments.config.question_yes) { %>
-                                                                <div class="cinemapress-comment-question-text-yes" style="display: none">
+                                                                <div class="cinemapress-comment-question-text-yes"
+                                                                     style="display: none">
                                                                     <%- comments.config.question_yes %>
                                                                 </div>
                                                             <% } %>
                                                             <% if (comments.config.question_not) { %>
-                                                                <div class="cinemapress-comment-question-text-not" style="display: none">
+                                                                <div class="cinemapress-comment-question-text-not"
+                                                                     style="display: none">
                                                                     <%- comments.config.question_not %>
                                                                 </div>
                                                             <% } %>
                                                             <div class="cinemapress-comment-question-bg"></div>
                                                             <% if (comments.config.question_poster) { %>
-                                                                <div class="cinemapress-comment-question-bg-poster" style="background-image:url('<%- comments.config.question_poster %>')"></div>
+                                                                <div class="cinemapress-comment-question-bg-poster"
+                                                                     style="background-image:url('<%- comments.config.question_poster %>')"></div>
                                                             <% } %>
                                                         </div>
                                                     <% } %>
                                                 </div>
-                                                <div style="font-size:8px;text-align:right;opacity:.2">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" style="font-size:8px" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" style="font-size:8px" target="_blank">Terms of Service</a> apply.</div>
+                                                <div style="font-size:8px;text-align:right;opacity:.2">This site is
+                                                    protected by reCAPTCHA and the Google <a
+                                                            href="https://policies.google.com/privacy"
+                                                            style="font-size:8px" target="_blank">Privacy Policy</a> and
+                                                    <a href="https://policies.google.com/terms" style="font-size:8px"
+                                                       target="_blank">Terms of Service</a> apply.
+                                                </div>
                                             </div>
                                             <%- comments.indexer ? comments.indexer : '' %>
                                             <% if (comments.list && comments.list.length) { %>
@@ -213,7 +247,8 @@
                                                     <div class="cinemapress-comment" id="c<%- comment.id %>">
                                                         <div class="cinemapress-comment-head">
                                                             <div class="cinemapress-comment-head-avatar">
-                                                                <img src="<%- comment.avatar %>" alt="<%= comment.user %>">
+                                                                <img src="<%- comment.avatar %>"
+                                                                     alt="<%= comment.user %>">
                                                             </div>
                                                             <% if (comments.config.star_rating) { %>
                                                                 <% if (comment.star === 1) { %>
@@ -232,26 +267,39 @@
                                                             <% } %>
                                                             <div class="cinemapress-comment-head-meta">
                                                                 <div class="cinemapress-comment-head-meta-vote">
-                                                        <span class="cinemapress-comment-like" data-comment-type="like" data-comment-id="<%- comment.id %>" title="<%= page.l.like %>">
+                                                        <span class="cinemapress-comment-like" data-comment-type="like"
+                                                              data-comment-id="<%- comment.id %>"
+                                                              title="<%= page.l.like %>">
                                                             <span class="cinemapress-comment-like-icon"></span>
                                                             <span class="cinemapress-comment-like-number"><%- comment.like %></span>
                                                         </span>
-                                                                    <span class="cinemapress-comment-dislike" data-comment-type="dislike" data-comment-id="<%- comment.id %>" title="<%= page.l.dislike %>">
+                                                                    <span class="cinemapress-comment-dislike"
+                                                                          data-comment-type="dislike"
+                                                                          data-comment-id="<%- comment.id %>"
+                                                                          title="<%= page.l.dislike %>">
                                                             <span class="cinemapress-comment-dislike-number"><%- comment.dislike %></span>
                                                             <span class="cinemapress-comment-dislike-icon"></span>
                                                         </span>
-                                                                    <span class="cinemapress-comment-reply" data-reply-id="<%- comment.id %>" data-bb-code="b" data-bb-value="<%- comment.user %>" title="<%= page.l.reply %>">
+                                                                    <span class="cinemapress-comment-reply"
+                                                                          data-reply-id="<%- comment.id %>"
+                                                                          data-bb-code="b"
+                                                                          data-bb-value="<%- comment.user %>"
+                                                                          title="<%= page.l.reply %>">
                                                             <span class="cinemapress-comment-reply-icon"></span>
                                                         </span>
                                                                 </div>
-                                                                <div class="cinemapress-comment-user" data-comment-id="<%- comment.id %>">
+                                                                <div class="cinemapress-comment-user"
+                                                                     data-comment-id="<%- comment.id %>">
                                                                     <div class="cinemapress-comment-user-name">
                                                                         <%- comment.user %>
-                                                                    </div><div class="cinemapress-comment-user-said">
+                                                                    </div>
+                                                                    <div class="cinemapress-comment-user-said">
                                                                         <%- page.l.said %>
-                                                                    </div><div class="cinemapress-comment-user-date">
+                                                                    </div>
+                                                                    <div class="cinemapress-comment-user-date">
                                                                         <%- comment.date %>
-                                                                    </div><div class="cinemapress-comment-user-link">
+                                                                    </div>
+                                                                    <div class="cinemapress-comment-user-link">
                                                                         <a href="<%- comment.url %>#c<%- comment.id %>">#</a>
                                                                     </div>
                                                                 </div>
@@ -274,10 +322,12 @@
                                         <% } %>
                                         <div class="cinemapress-comment-arrow">
                                             <% if (comments && comments.prev) { %>
-                                                <div class="cinemapress-prev-comments" onclick="window.location.href='?page=<%- comments.prev %>#cinemapress-comments'"></div>
+                                                <div class="cinemapress-prev-comments"
+                                                     onclick="window.location.href='?page=<%- comments.prev %>#cinemapress-comments'"></div>
                                             <% } %>
                                             <% if (comments && comments.next) { %>
-                                                <div class="cinemapress-next-comments" onclick="window.location.href='?page=<%- comments.next %>#cinemapress-comments'"></div>
+                                                <div class="cinemapress-next-comments"
+                                                     onclick="window.location.href='?page=<%- comments.next %>#cinemapress-comments'"></div>
                                             <% } %>
                                         </div>
                                     </div>
@@ -294,27 +344,43 @@
                                     <%- page.l.share %>
                                 </li>
                                 <li class="panel-share">
-                                    <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(page.url) %>" target="_blank" aria-label="">
-                                        <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-                                                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk2LjIyNyA5Ni4yMjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2LjIyNyA5Ni4yMjc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNNzMuMDk5LDE1Ljk3M2wtOS4wNTgsMC4wMDRjLTcuMTAyLDAtOC40NzcsMy4zNzUtOC40NzcsOC4zMjh2MTAuOTIxaDE2LjkzOGwtMC4wMDYsMTcuMTA2SDU1LjU2NHY0My44OTVIMzcuODk3VjUyLjMzMiAgIGgtMTQuNzdWMzUuMjI2aDE0Ljc3VjIyLjYxMkMzNy44OTcsNy45NzIsNDYuODQsMCw1OS45LDBMNzMuMSwwLjAyMUw3My4wOTksMTUuOTczTDczLjA5OSwxNS45NzN6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
+                                    <a class="resp-sharing-button__link"
+                                       href="https://facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(page.url) %>"
+                                       target="_blank" aria-label="">
+                                        <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+                                            <div aria-hidden="true"
+                                                 class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                                                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk2LjIyNyA5Ni4yMjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2LjIyNyA5Ni4yMjc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNNzMuMDk5LDE1Ljk3M2wtOS4wNTgsMC4wMDRjLTcuMTAyLDAtOC40NzcsMy4zNzUtOC40NzcsOC4zMjh2MTAuOTIxaDE2LjkzOGwtMC4wMDYsMTcuMTA2SDU1LjU2NHY0My44OTVIMzcuODk3VjUyLjMzMiAgIGgtMTQuNzdWMzUuMjI2aDE0Ljc3VjIyLjYxMkMzNy44OTcsNy45NzIsNDYuODQsMCw1OS45LDBMNzMuMSwwLjAyMUw3My4wOTksMTUuOTczTDczLjA5OSwxNS45NzN6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=="/>
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=<%- encodeURIComponent(page.url) %>&url=<%- encodeURIComponent(page.url) %>" target="_blank" aria-label="">
-                                        <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-                                                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk0LjEzNSA5NC4xMzUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk0LjEzNSA5NC4xMzU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMzkuMTEsNjcuMTQ1YzIuMjAxLDIuMjcsNC44NzIsMy40MDQsOC4wMTEsMy40MDRoMjIuNjEyYzMuMTM1LDAsNS44MywxLjE1OSw4LjA3MiwzLjQ3NSAgIGMyLjI0NSwyLjMxMiwzLjM2NCw1LjA4NCwzLjM2NCw4LjMycy0xLjExOSw2LjAxOC0zLjM2NCw4LjMyNGMtMi4yNDIsMi4zMTEtNC45MjgsMy40NjctOC4wNywzLjQ2N0g0Ny4xMzEgICBjLTkuNDE2LDAtMTcuNDYyLTMuNDQ1LTI0LjE0My0xMC4zNDRjLTYuNjg2LTYuODk1LTEwLjAyNi0xNS4yMDItMTAuMDI2LTI0LjkxOXYtNDcuMDdjMC0zLjMyOSwxLjExNC02LjEzLDMuMzQtOC40ICAgQzE4LjUyNywxLjEzNiwyMS4yNDcsMCwyNC40NTcsMGMzLjExNSwwLDUuNzk2LDEuMTU1LDguMDE2LDMuNDczYzIuMjI5LDIuMzA5LDMuMzQ0LDUuMDgxLDMuMzQ0LDguMzIxdjExLjc5MWgzMy44ODUgICBjMy4xNDgsMCw1Ljg0NywxLjE1OCw4LjA5OCwzLjQ3MWMyLjI1MywyLjMxMSwzLjM3Myw1LjA4NiwzLjM3Myw4LjMyNWMwLDMuMjMzLTEuMTIsNi4wMDktMy4zNjUsOC4zMjEgICBjLTIuMjQyLDIuMzExLTQuOTM2LDMuNDY4LTguMDcyLDMuNDY4SDM1LjgxNHYxMS42OTFDMzUuODE0LDYyLjEwNywzNi45MTEsNjQuODY3LDM5LjExLDY3LjE0NXoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                                    <a class="resp-sharing-button__link"
+                                       href="https://twitter.com/intent/tweet/?text=<%- encodeURIComponent(page.url) %>&url=<%- encodeURIComponent(page.url) %>"
+                                       target="_blank" aria-label="">
+                                        <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+                                            <div aria-hidden="true"
+                                                 class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                                                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk0LjEzNSA5NC4xMzUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk0LjEzNSA5NC4xMzU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMzkuMTEsNjcuMTQ1YzIuMjAxLDIuMjcsNC44NzIsMy40MDQsOC4wMTEsMy40MDRoMjIuNjEyYzMuMTM1LDAsNS44MywxLjE1OSw4LjA3MiwzLjQ3NSAgIGMyLjI0NSwyLjMxMiwzLjM2NCw1LjA4NCwzLjM2NCw4LjMycy0xLjExOSw2LjAxOC0zLjM2NCw4LjMyNGMtMi4yNDIsMi4zMTEtNC45MjgsMy40NjctOC4wNywzLjQ2N0g0Ny4xMzEgICBjLTkuNDE2LDAtMTcuNDYyLTMuNDQ1LTI0LjE0My0xMC4zNDRjLTYuNjg2LTYuODk1LTEwLjAyNi0xNS4yMDItMTAuMDI2LTI0LjkxOXYtNDcuMDdjMC0zLjMyOSwxLjExNC02LjEzLDMuMzQtOC40ICAgQzE4LjUyNywxLjEzNiwyMS4yNDcsMCwyNC40NTcsMGMzLjExNSwwLDUuNzk2LDEuMTU1LDguMDE2LDMuNDczYzIuMjI5LDIuMzA5LDMuMzQ0LDUuMDgxLDMuMzQ0LDguMzIxdjExLjc5MWgzMy44ODUgICBjMy4xNDgsMCw1Ljg0NywxLjE1OCw4LjA5OCwzLjQ3MWMyLjI1MywyLjMxMSwzLjM3Myw1LjA4NiwzLjM3Myw4LjMyNWMwLDMuMjMzLTEuMTIsNi4wMDktMy4zNjUsOC4zMjEgICBjLTIuMjQyLDIuMzExLTQuOTM2LDMuNDY4LTguMDcyLDMuNDY4SDM1LjgxNHYxMS42OTFDMzUuODE0LDYyLjEwNywzNi45MTEsNjQuODY3LDM5LjExLDY3LjE0NXoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"/>
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="resp-sharing-button__link" href="https://t.me/share/url?url=<%- encodeURIComponent(page.url) %>" target="_blank" aria-label="">
-                                        <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-                                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMjRweCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSIyNHB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZyBpZD0iY29tcF94NUZfMzM1LXRlbGVncmFtIj48Zz48cGF0aCBzdHlsZT0iZmlsbDp3aGl0ZTtmaWxsLW9wYWNpdHk6MTsiIGQ9Ik00ODQuNjg5LDk4LjIzMWwtNjkuNDE3LDMyNy4zN2MtNS4yMzcsMjMuMTA1LTE4Ljg5NSwyOC44NTQtMzguMzA0LDE3Ljk3MkwyNzEuMiwzNjUuNjMxbC01MS4wMzQsNDkuMDg2ICAgIGMtNS42NDcsNS42NDctMTAuMzcyLDEwLjM3Mi0yMS4yNTYsMTAuMzcybDcuNTk4LTEwNy43MjJMNDAyLjUzOSwxNDAuMjNjOC41MjMtNy41OTgtMS44NDgtMTEuODA5LTEzLjI0Ny00LjIxTDE0Ni45NSwyODguNjE0ICAgIEw0Mi42MTksMjU1Ljk2Yy0yMi42OTQtNy4wODYtMjMuMTA0LTIyLjY5NSw0LjcyMy0zMy41NzlMNDU1LjQyMyw2NS4xNjZDNDc0LjMxNiw1OC4wODEsNDkwLjg1LDY5LjM3NSw0ODQuNjg5LDk4LjIzMXoiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8xIi8+PC9zdmc+" />
+                                    <a class="resp-sharing-button__link"
+                                       href="https://t.me/share/url?url=<%- encodeURIComponent(page.url) %>"
+                                       target="_blank" aria-label="">
+                                        <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+                                            <div aria-hidden="true"
+                                                 class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMjRweCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSIyNHB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZyBpZD0iY29tcF94NUZfMzM1LXRlbGVncmFtIj48Zz48cGF0aCBzdHlsZT0iZmlsbDp3aGl0ZTtmaWxsLW9wYWNpdHk6MTsiIGQ9Ik00ODQuNjg5LDk4LjIzMWwtNjkuNDE3LDMyNy4zN2MtNS4yMzcsMjMuMTA1LTE4Ljg5NSwyOC44NTQtMzguMzA0LDE3Ljk3MkwyNzEuMiwzNjUuNjMxbC01MS4wMzQsNDkuMDg2ICAgIGMtNS42NDcsNS42NDctMTAuMzcyLDEwLjM3Mi0yMS4yNTYsMTAuMzcybDcuNTk4LTEwNy43MjJMNDAyLjUzOSwxNDAuMjNjOC41MjMtNy41OTgtMS44NDgtMTEuODA5LTEzLjI0Ny00LjIxTDE0Ni45NSwyODguNjE0ICAgIEw0Mi42MTksMjU1Ljk2Yy0yMi42OTQtNy4wODYtMjMuMTA0LTIyLjY5NSw0LjcyMy0zMy41NzlMNDU1LjQyMyw2NS4xNjZDNDc0LjMxNiw1OC4wODEsNDkwLjg1LDY5LjM3NSw0ODQuNjg5LDk4LjIzMXoiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8xIi8+PC9zdmc+"/>
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="resp-sharing-button__link" href="https://vk.com/share.php?url=<%- encodeURIComponent(page.url) %>" target="_blank" aria-label="">
-                                        <div class="resp-sharing-button resp-sharing-button--vk resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-                                                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk2LjQ5NiA5Ni40OTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2LjQ5NiA5Ni40OTY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNOTIuNDk5LDY1LjE3OGMtMi44NzMtMy40NDYtNi4yNTQtNi4zODctOS40NTMtOS41MWMtMi44ODYtMi44MTUtMy4wNjgtNC40NDgtMC43NDgtNy42OTcgICBjMi41MzItMy41NDYsNS4yNTUtNi45NTYsNy44MS0xMC40ODZjMi4zODUtMy4yOTksNC44MjMtNi41ODksNi4wNzgtMTAuNTM5YzAuNzk2LTIuNTEzLDAuMDkyLTMuNjIzLTIuNDg1LTQuMDYzICAgYy0wLjQ0NC0wLjA3Ny0wLjkwMy0wLjA4MS0xLjM1NS0wLjA4MWwtMTUuMjg5LTAuMDE4Yy0xLjg4My0wLjAyOC0yLjkyNCwwLjc5My0zLjU5LDIuNDYyYy0wLjg5OSwyLjI1Ni0xLjgyNiw0LjUxLTIuODk3LDYuNjg3ICAgYy0yLjQzLDQuOTM2LTUuMTQ0LDkuNzA3LTguOTQ5LDEzLjc0N2MtMC44MzksMC44OTEtMS43NjcsMi4wMTctMy4xNjksMS41NTNjLTEuNzU0LTAuNjQtMi4yNzEtMy41My0yLjI0Mi00LjUwN2wtMC4wMTUtMTcuNjQ3ICAgYy0wLjM0LTIuNTIxLTAuODk5LTMuNjQ1LTMuNDAyLTQuMTM1bC0xNS44ODIsMC4wMDNjLTIuMTIsMC0zLjE4MywwLjgxOS00LjMxNSwyLjE0NWMtMC42NTMsMC43NjYtMC44NSwxLjI2MywwLjQ5MiwxLjUxNyAgIGMyLjYzNiwwLjUsNC4xMjEsMi4yMDYsNC41MTUsNC44NDljMC42MzIsNC4yMjMsMC41ODgsOC40NjMsMC4yMjQsMTIuNzAzYy0wLjEwNywxLjIzOC0wLjMyLDIuNDczLTAuODExLDMuNjI5ICAgYy0wLjc2OCwxLjgxNy0yLjAwOCwyLjE4Ny0zLjYzNywxLjA2OWMtMS40NzUtMS4wMTItMi41MTEtMi40NC0zLjUyNS0zLjg3NGMtMy44MDktNS4zODItNi44NDgtMTEuMTg2LTkuMzI2LTE3LjI4NSAgIGMtMC43MTYtMS43NjItMS45NTEtMi44My0zLjgxOC0yLjg1OWMtNC41ODctMC4wNzMtOS4xNzUtMC4wODUtMTMuNzYyLDAuMDA0Yy0yLjc2LDAuMDUyLTMuNTgzLDEuMzkyLTIuNDU5LDMuODk0ICAgYzQuOTk2LDExLjExMywxMC41NTcsMjEuOTE3LDE3LjgxNiwzMS43NTljMy43MjcsNS4wNTEsOC4wMDYsOS41MSwxMy41MzQsMTIuNjdjNi4yNjUsMy41ODIsMTMuMDA5LDQuNjYsMjAuMTEyLDQuMzI4ICAgYzMuMzI2LTAuMTU2LDQuMzI1LTEuMDIxLDQuNDc5LTQuMzM2YzAuMTA0LTIuMjY4LDAuMzYxLTQuNTIzLDEuNDgtNi41NjFjMS4wOTgtMiwyLjc2MS0yLjM4MSw0LjY3OC0xLjEzNyAgIGMwLjk1OSwwLjYyMywxLjc2NywxLjQxNiwyLjUzLDIuMjUyYzEuODcyLDIuMDQ4LDMuNjc3LDQuMTU4LDUuNjIsNi4xMzdjMi40MzcsMi40OCw1LjMyNCwzLjk0NSw4Ljk1NCwzLjY0Nkw5My43NDQsNzUuNSAgIGMyLjI2NC0wLjE0OCwzLjQzOC0yLjkyNCwyLjEzOC01LjQ1MUM5NC45NjksNjguMjc5LDkzLjc3MSw2Ni43MDMsOTIuNDk5LDY1LjE3OHoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                                    <a class="resp-sharing-button__link"
+                                       href="https://vk.com/share.php?url=<%- encodeURIComponent(page.url) %>"
+                                       target="_blank" aria-label="">
+                                        <div class="resp-sharing-button resp-sharing-button--vk resp-sharing-button--small">
+                                            <div aria-hidden="true"
+                                                 class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                                                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDk2LjQ5NiA5Ni40OTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2LjQ5NiA5Ni40OTY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNOTIuNDk5LDY1LjE3OGMtMi44NzMtMy40NDYtNi4yNTQtNi4zODctOS40NTMtOS41MWMtMi44ODYtMi44MTUtMy4wNjgtNC40NDgtMC43NDgtNy42OTcgICBjMi41MzItMy41NDYsNS4yNTUtNi45NTYsNy44MS0xMC40ODZjMi4zODUtMy4yOTksNC44MjMtNi41ODksNi4wNzgtMTAuNTM5YzAuNzk2LTIuNTEzLDAuMDkyLTMuNjIzLTIuNDg1LTQuMDYzICAgYy0wLjQ0NC0wLjA3Ny0wLjkwMy0wLjA4MS0xLjM1NS0wLjA4MWwtMTUuMjg5LTAuMDE4Yy0xLjg4My0wLjAyOC0yLjkyNCwwLjc5My0zLjU5LDIuNDYyYy0wLjg5OSwyLjI1Ni0xLjgyNiw0LjUxLTIuODk3LDYuNjg3ICAgYy0yLjQzLDQuOTM2LTUuMTQ0LDkuNzA3LTguOTQ5LDEzLjc0N2MtMC44MzksMC44OTEtMS43NjcsMi4wMTctMy4xNjksMS41NTNjLTEuNzU0LTAuNjQtMi4yNzEtMy41My0yLjI0Mi00LjUwN2wtMC4wMTUtMTcuNjQ3ICAgYy0wLjM0LTIuNTIxLTAuODk5LTMuNjQ1LTMuNDAyLTQuMTM1bC0xNS44ODIsMC4wMDNjLTIuMTIsMC0zLjE4MywwLjgxOS00LjMxNSwyLjE0NWMtMC42NTMsMC43NjYtMC44NSwxLjI2MywwLjQ5MiwxLjUxNyAgIGMyLjYzNiwwLjUsNC4xMjEsMi4yMDYsNC41MTUsNC44NDljMC42MzIsNC4yMjMsMC41ODgsOC40NjMsMC4yMjQsMTIuNzAzYy0wLjEwNywxLjIzOC0wLjMyLDIuNDczLTAuODExLDMuNjI5ICAgYy0wLjc2OCwxLjgxNy0yLjAwOCwyLjE4Ny0zLjYzNywxLjA2OWMtMS40NzUtMS4wMTItMi41MTEtMi40NC0zLjUyNS0zLjg3NGMtMy44MDktNS4zODItNi44NDgtMTEuMTg2LTkuMzI2LTE3LjI4NSAgIGMtMC43MTYtMS43NjItMS45NTEtMi44My0zLjgxOC0yLjg1OWMtNC41ODctMC4wNzMtOS4xNzUtMC4wODUtMTMuNzYyLDAuMDA0Yy0yLjc2LDAuMDUyLTMuNTgzLDEuMzkyLTIuNDU5LDMuODk0ICAgYzQuOTk2LDExLjExMywxMC41NTcsMjEuOTE3LDE3LjgxNiwzMS43NTljMy43MjcsNS4wNTEsOC4wMDYsOS41MSwxMy41MzQsMTIuNjdjNi4yNjUsMy41ODIsMTMuMDA5LDQuNjYsMjAuMTEyLDQuMzI4ICAgYzMuMzI2LTAuMTU2LDQuMzI1LTEuMDIxLDQuNDc5LTQuMzM2YzAuMTA0LTIuMjY4LDAuMzYxLTQuNTIzLDEuNDgtNi41NjFjMS4wOTgtMiwyLjc2MS0yLjM4MSw0LjY3OC0xLjEzNyAgIGMwLjk1OSwwLjYyMywxLjc2NywxLjQxNiwyLjUzLDIuMjUyYzEuODcyLDIuMDQ4LDMuNjc3LDQuMTU4LDUuNjIsNi4xMzdjMi40MzcsMi40OCw1LjMyNCwzLjk0NSw4Ljk1NCwzLjY0Nkw5My43NDQsNzUuNSAgIGMyLjI2NC0wLjE0OCwzLjQzOC0yLjkyNCwyLjEzOC01LjQ1MUM5NC45NjksNjguMjc5LDkzLjc3MSw2Ni43MDMsOTIuNDk5LDY1LjE3OHoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"/>
                                             </div>
                                         </div>
                                     </a>
@@ -342,10 +408,12 @@
                                             <a href="<%- content.url %>" class="list-link">
                                                 <div class="list-link-stacked clear">
                                                     <ul class="poster-list -overlapped -p70">
-                                                        <% content.movies.slice(0,5).forEach(function (id) { %>
+                                                        <% content.movies.slice(0, 5).forEach(function (id) { %>
                                                             <li class="react-component film-poster poster">
                                                                 <div>
-                                                                    <img src="/files/poster/small/<%- id %>.jpg" width="70" height="105" alt="<%= content.title %>" class="image">
+                                                                    <img src="/files/poster/small/<%- id %>.jpg"
+                                                                         width="70" height="105"
+                                                                         alt="<%= content.title %>" class="image">
                                                                 </div>
                                                             </li>
                                                         <% }); %>

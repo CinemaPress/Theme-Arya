@@ -1,6 +1,8 @@
 <header id="header">
     <section>
-        <div style="height: 15px;"></div><div class="logo" style="background-image:url('/themes/<%- page.theme %>/public/images/logo.png?v=<%- page.ver %>');"></div>
+        <div style="height: 15px;"></div>
+        <div class="logo"
+             style="background-image:url('/themes/<%- page.theme %>/public/images/logo.png?v=<%- page.ver %>');"></div>
         <div class="react-component">
             <div>
                 <nav id="main-nav">
@@ -11,7 +13,7 @@
                             </a>
                         </li>
                         <li class="films-page main-nav-films">
-                            <% page.urls.years.slice(0,1).forEach(function(year) { %>
+                            <% page.urls.years.slice(0, 1).forEach(function(year) { %>
                                 <a href="<%- year.url %>" class="has-icon">
                                     <span class="icon"></span><%- page.l.premieres %>
                                 </a>
@@ -23,14 +25,16 @@
                             </a>
                         </li>
                         <li class="films-page main-nav-films continueViewingBlock" style="display: none">
-                            <a href="javascript:void(0)" class="has-icon icon-16 icon-watched small-watched no-avatars" id="continueViewing" title="<%= page.l.continue %>">
+                            <a href="javascript:void(0)" class="has-icon icon-16 icon-watched small-watched no-avatars"
+                               id="continueViewing" title="<%= page.l.continue %>">
                                 <span class="icon" style="margin-top: 8px;"></span>
                             </a>
                         </li>
                         <div class="randomMovieMenu">
                             <li class="films-page main-nav-films cinemapress-random-menu">
                                 <a href="/?random=<%- Math.random() %>" class="no-avatars" title="<%= page.l.lucky %>">
-                                    <img src="/themes/<%- page.theme %>/public/images/dice.svg" alt="<%= page.l.lucky %>">
+                                    <img src="/themes/<%- page.theme %>/public/images/dice.svg"
+                                         alt="<%= page.l.lucky %>">
                                 </a>
                             </li>
                         </div>
@@ -38,7 +42,8 @@
                 </nav>
             </div>
         </div>
-        <form id="search" class="js-search-form search-form" action="/<%- page.urls.search %>" method="get" style="display: block; z-index: 901;">
+        <form id="search" class="js-search-form search-form" action="/<%- page.urls.search %>" method="get"
+              style="display: block; z-index: 901;">
             <fieldset>
                 <label for="search-q" class="hidden"><%- page.l.search %>:</label>
                 <input type="text" name="q" id="search-q" class="field -borderless" data-autocomplete="desktop">
