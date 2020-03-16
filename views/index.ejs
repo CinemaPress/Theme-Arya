@@ -94,11 +94,7 @@
                                              class="image">
                                         <a href="<%- movie.url %>" class="frame"
                                            title="<%= movie.title %> (<% if (movie.season && movie.episode) { %><%- movie.season %> <%- page.l.season %> <%- movie.episode %> <%- page.l.episode %><% } else { %><%- movie.year %><% } %>)">
-                                            <span class="frame-title"><%= movie.title %> (
-                                                <% if (movie.season && movie.episode) { %><%- movie.season %> <%- page.l.season %> <%- movie.episode %> <%- page.l.episode %>
-                                                <% } else { %><%- movie.year %>
-                                                <% } %>
-                                                )</span>
+                                            <span class="frame-title"><%= movie.title %> (<% if (movie.season && movie.episode) { %><%- movie.season %> <%- page.l.season %> <%- movie.episode %> <%- page.l.episode %><% } else { %><%- movie.year %><% } %>)</span>
                                             <span class="overlay"></span>
                                         </a>
                                     </div>
