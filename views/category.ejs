@@ -33,7 +33,7 @@
 
                             <div class="body-text -prose -hero clear collapsible-text">
                                 <div class="collapsed-text">
-                                    <% if (typeof content === 'object') { %>
+                                    <% if (typeof content === 'object' && page.current_page === 1) { %>
                                         <% if (content.image) { %>
                                             <img src="<%- content.image %>"
                                                  style="height: 150px;border-radius: 5px;float: left;margin-right: 10px;margin-bottom: 10px; margin-top: 8px;">
@@ -147,7 +147,7 @@
                             </div>
                         <% } %>
 
-                        <% if (typeof content === 'object') { %>
+                        <% if (typeof content === 'object' && page.current_page === 1) { %>
                             <% if (page.comments) { %>
                                 <div id="comments" class="clear has-comment-controls">
                                     <h2 class="section-heading">
@@ -388,7 +388,7 @@
                             </ul>
                         </section>
 
-                        <% if (typeof content === 'object' && content.tags) { %>
+                        <% if (typeof content === 'object' && page.current_page === 1 && content.tags) { %>
                             <section class="section" style="margin-bottom: 20px">
                                 <h3 class="section-heading"><%- page.l.tags %></h3>
                                 <ul class="tags">
