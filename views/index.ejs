@@ -84,7 +84,7 @@
                 </h2>
                 <div class="live-feed-container has-fade"><span class="fadeout"></span>
                     <ul class="poster-list -p70 -horizontal">
-                        <% if (category.movies.length) {
+                        <% if (typeof category === 'object' && category.movies && category.movies.length) {
                         category.movies.slice(0, 12).forEach(function (movie) { %>
                             <li class="live-poster">
                                 <div class="react-component film-poster poster linked-film-poster">
