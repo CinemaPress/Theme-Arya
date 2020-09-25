@@ -19,49 +19,40 @@
         <section class="social">
             <% if (page.social.vk) { %>
                 <span class="vk">
-            <a href="<%- page.social.vk %>" class="tooltip" title="<%= page.l.vk %>"
-               target="_blank"><%- page.l.vk %></a>
-        </span>
+                    <a href="<%- page.social.vk %>" class="tooltip" title="<%= page.l.vk %>" target="_blank"><%- page.l.vk %></a>
+                </span>
             <% } %>
             <% if (page.social.facebook) { %>
                 <span class="facebook">
-            <a href="<%- page.social.facebook %>" class="tooltip" title="<%= page.l.facebook %>"
-               target="_blank"><%- page.l.facebook %></a>
-        </span>
+                    <a href="<%- page.social.facebook %>" class="tooltip" title="<%= page.l.facebook %>" target="_blank"><%- page.l.facebook %></a>
+                </span>
             <% } %>
             <% if (page.social.twitter) { %>
                 <span class="twitter">
-            <a href="<%- page.social.twitter %>" class="tooltip" title="<%= page.l.twitter %>"
-               target="_blank"><%- page.l.twitter %></a>
-        </span>
-            <% } %>
-            <% if (page.social.telegram) { %>
-                <span class="telegram">
-            <a href="<%- page.social.telegram %>" class="tooltip" title="<%= page.l.telegram %>"
-               target="_blank"><%- page.l.telegram %></a>
-        </span>
+                    <a href="<%- page.social.twitter %>" class="tooltip" title="<%= page.l.twitter %>" target="_blank"><%- page.l.twitter %></a>
+                </span>
             <% } %>
             <% if (page.social.youtube) { %>
                 <span class="youtube">
-            <a href="<%- page.social.youtube %>" class="tooltip" title="<%= page.l.youtube %>"
-               target="_blank"><%- page.l.youtube %></a>
-        </span>
+                    <a href="<%- page.social.youtube %>" class="tooltip" title="<%= page.l.youtube %>" target="_blank"><%- page.l.youtube %></a>
+                </span>
             <% } %>
             <% if (page.social.instagram) { %>
                 <span class="instagram">
-            <a href="<%- page.social.instagram %>" class="tooltip" title="<%= page.l.instagram %>"
-               target="_blank"><%- page.l.instagram %></a>
-        </span>
+                    <a href="<%- page.social.instagram %>" class="tooltip" title="<%= page.l.instagram %>" target="_blank"><%- page.l.instagram %></a>
+                </span>
+            <% } %>
+            <% if (page.social.telegram) { %>
+                <span class="telegram">
+                    <a href="<%- page.social.telegram %>" class="tooltip" title="<%= page.l.telegram %>" target="_blank"><%- page.l.telegram %></a>
+                </span>
             <% } %>
         </section>
     <% } %>
     <p class="copyright">
-        &copy;&nbsp;<%- new Date().getFullYear() %>&nbsp;<a href="https://cinemapress.io"
-                                                            target="_blank">CinemaPress</a> | <%- page.l.contacts %>:
+        &copy;&nbsp;<%- new Date().getFullYear() %>&nbsp;<a href="https://cinemapress.io" target="_blank">CinemaPress</a> | <%- page.l.contacts %>:
         <span id="mylo">Activate JS</span>
-        <script>(function(d, i, l, r) {
-            d.getElementById(i).innerHTML = l + '@' + r;
-          })(window.document, 'mylo', '<%- page.email.split('@')[0] %>', '<%- page.email.split('@')[1] %>');</script>
+        <script>(function(d,i,l,r){d.getElementById(i).innerHTML = l + '@' + r;})(window.document, 'mylo', '<%- page.email.split('@')[0] %>', '<%- page.email.split('@')[1] %>');</script>
     </p>
 
     <script>
