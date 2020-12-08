@@ -11,20 +11,15 @@
 <%- include('includes/header.ejs'); -%>
 
 <div id="content" class="has-backdrop">
-    <div id="backdrop"
-         style="background-image: url('<% if (movie.pictures.length) { %><%- movie.picture %><% } %>'); background-position: 50% -20px;">
-        <div
-        <% if (movie.pictures.length) { %> class="backdrop-fade backdrop-fade-image"
-        <% } else { %> style="padding-top: 50px;"
-                <% } %>
-        >
+    <div id="backdrop" data-cinemapress-bg-src="<% if (movie.pictures.length) { %><%- movie.picture %><% } %>" style="background-image: url('<% if (movie.pictures.length) { %><%- movie.picture_min %><% } %>'); background-position: 50% -20px;">
+        <div <% if (movie.pictures.length) { %> class="backdrop-fade backdrop-fade-image" <% } else { %> style="padding-top: 50px;"<% } %>>
             <div class="content-wrap">
                 <div id="film-page-wrapper" class="cols-3 overflow">
                     <div id="poster-col" class="col-6 gutter-right-1 col-poster-large">
                         <section class="poster-list -p230 no-hover el col">
                             <div class="react-component film-poster poster">
                                 <div>
-                                    <img src="<%- movie.poster %>" width="230" height="345" class="image"
+                                    <img src="<%- movie.poster_min %>" data-cinemapress-src="<%- movie.poster %>" width="230" height="345" class="image"
                                          alt="<%= page.title %>" title="<%= page.title %>"
                                          data-cinemapress-poster="<%- movie.poster %>">
                                     <span class="frame">
@@ -595,7 +590,7 @@
                                     category.movies.slice(0, 6).forEach(function (movie) { %>
                                         <li class="poster-container">
                                             <div class="poster film-poster really-lazy-load">
-                                                <img src="<%- movie.poster %>" class="image" width="110" height="165"
+                                                <img src="<%- movie.poster_min %>" data-cinemapress-src="<%- movie.poster %>" class="image" width="110" height="165"
                                                      alt="<%= movie.title %>">
                                                 <a href="<%- movie.url %>" class="frame">
                                                     <span class="frame-title"><%= movie.title %> (<%- movie.year %>)</span>

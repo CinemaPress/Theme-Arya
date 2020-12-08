@@ -16,7 +16,7 @@
             bg = movie.picture;
         });
     } %>
-    <div id="backdrop" style="background-position: center -90px; background-image: url('<%- bg %>');">
+    <div id="backdrop" style="background-position: center -90px;" data-cinemapress-bg-src="<%- bg %>">
         <div class="backdrop-fade backdrop-fade-image">
             <div class="content-wrap">
                 <div class="cols-2">
@@ -35,7 +35,7 @@
                                 <div class="collapsed-text">
                                     <% if (typeof content === 'object' && page.current_page === 1) { %>
                                         <% if (content.image) { %>
-                                            <img src="<%- content.image %>"
+                                            <img src="<%- content.image %>" alt=""
                                                  style="height: 150px;border-radius: 5px;float: left;margin-right: 10px;margin-bottom: 10px; margin-top: 8px;">
                                         <% } %>
                                         <% if (content.description) { %>
@@ -91,7 +91,7 @@
                                 <% movies.forEach(function (movie) { %>
                                     <li class="film-detail">
                                         <div class="poster film-poster really-lazy-load">
-                                            <img src="<%- movie.poster_min %>" class="image" width="70" height="105"
+                                            <img src="<%- movie.poster_min %>" data-cinemapress-src="<%- movie.poster %>" class="image" width="70" height="105"
                                                  alt="<%= movie.title %>"/>
                                             <span class="frame"><span class="frame-title"></span></span>
                                         </div>
