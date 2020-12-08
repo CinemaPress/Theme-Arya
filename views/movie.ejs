@@ -11,7 +11,7 @@
 <%- include('includes/header.ejs'); -%>
 
 <div id="content" class="has-backdrop">
-    <div id="backdrop" data-cinemapress-bg-src="<% if (movie.pictures.length) { %><%- movie.picture %><% } %>" style="background-image: url('<% if (movie.pictures.length) { %><%- movie.picture_min %><% } %>'); background-position: 50% -20px;">
+    <div id="backdrop" data-cinemapress-bg-src="<% if (movie.pictures.length) { %><%- movie.picture_big %><% } %>" style="background-image: url('<% if (movie.pictures.length) { %><%- movie.picture_min %><% } %>'); background-position: 50% -20px;">
         <div <% if (movie.pictures.length) { %> class="backdrop-fade backdrop-fade-image" <% } else { %> style="padding-top: 50px;"<% } %>>
             <div class="content-wrap">
                 <div id="film-page-wrapper" class="cols-3 overflow">

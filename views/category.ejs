@@ -13,7 +13,7 @@
 <div id="content" class="has-backdrop">
     <% var bg = ''; if (typeof movies === 'object' && movies.length) {
         movies.slice(0, 1).forEach(function(movie) {
-            bg = movie.picture;
+            bg = movie.picture_big;
         });
     } %>
     <div id="backdrop" style="background-position: center -90px;" data-cinemapress-bg-src="<%- bg %>">
