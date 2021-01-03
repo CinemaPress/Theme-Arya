@@ -46,8 +46,7 @@
                     <% slider.slice(0, 6).forEach(function (movie) { %>
                         <li class="react-component film-poster poster linked-film-poster">
                             <div>
-                                <img src="<%- movie.poster_min %>" data-cinemapress-src="<%- movie.poster %>" width="150" height="225" alt="<%= movie.title %>"
-                                     class="image">
+                                <img src="<%- movie.poster_min %>" data-src="<%- movie.poster %>" width="150" height="225" alt="<%= movie.title %>"  class="image lazy">
                                 <a href="<%- movie.url %>" class="frame" title="<%= movie.title %>">
                                     <span class="frame-title"><%= movie.title %></span>
                                     <span class="overlay"></span>

@@ -16,7 +16,7 @@
             bg = movie.picture_big;
         });
     } %>
-    <div id="backdrop" style="background-position: center -90px;" data-cinemapress-bg-src="<%- bg %>">
+    <div id="backdrop" style="background-position: center -90px;" class="lazy" data-bg="<%- bg %>">
         <div class="backdrop-fade backdrop-fade-image">
             <div class="content-wrap">
                 <div class="cols-2">
@@ -91,7 +91,7 @@
                                 <% movies.forEach(function (movie) { %>
                                     <li class="film-detail">
                                         <div class="poster film-poster really-lazy-load">
-                                            <img src="<%- movie.poster_min %>" data-cinemapress-src="<%- movie.poster %>" class="image" width="70" height="105"
+                                            <img src="<%- movie.poster_min %>" data-src="<%- movie.poster %>" class="image lazy" width="70" height="105"
                                                  alt="<%= movie.title %>"/>
                                             <span class="frame"><span class="frame-title"></span></span>
                                         </div>
