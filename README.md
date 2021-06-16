@@ -1,10 +1,10 @@
 # Theme «arya»
 
-![Theme «arya» for CinemaPress](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png "Theme «arya» for CinemaPress")
+![Theme «arya» for CinemaPress](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)
 
 :art: Theme «arya» for CinemaPress
 
-- [Arya.CinemaPress.io](http://Arya.CinemaPress.io/)
+- `«arya»`
 
 ## How to install?
 1. Download [GitHub](https://github.com/CinemaPress/Theme-Arya/archive/master.zip) or [GitLab](https://gitlab.com/CinemaPress/Theme-Arya/repository/archive.zip) or [BitBucket](https://bitbucket.org/cinemapress/theme-arya/get/master.zip)
